@@ -43,10 +43,40 @@ All pages funnel branded leads and links to the main site, **https://www.sanctif
 ## Important notes
 
 - **Deployment path:** Pages use **root-relative** links (`/assets/...`, `/seo/panjim.html`), so the site must be served from the **domain root** of `sanctify.biz`. Extract each zip at the web root.
-- **Images:** Photos are hotlinked from the Unsplash CDN (fast, permitted under the Unsplash License). Attribution is on `/image-credits.html`. If you prefer fully self-hosted images later, we can download and bundle them.
-- **Lead form:** Currently submits via the visitor's email app (`mailto:` to `help@sanctify.in`) so it works on any static host with no backend. **Recommended upgrade:** point the form at a form endpoint or CRM so leads are captured automatically. Edit `assets/js/main.js`.
+- **Images:** All photos are **self-hosted** and bundled in Wave 1 under `/assets/img/` (25 images, ~3 MB, web-optimised JPEGs). No external image dependencies. Sourced from Unsplash under the Unsplash License; photographer attribution is on `/image-credits.html`.
 - **Phone / WhatsApp / email** are wired to `+91-9923352923` and `help@sanctify.in` throughout. Update in `data/site.json` and rebuild if these change.
-- **Analytics:** Add your GA4 tag (ideally with cross-domain tracking to `sanctify.in`) before Wave 1 goes live so you can measure referral traffic and leads. Paste the snippet into the `head()` function in `scripts/build.js` and rebuild.
+
+### ✅ Setup before Wave 1 goes live (2 values to paste)
+
+Everything is already wired — you only need to drop two values into **`data/site.json`** and run `npm run package`.
+
+**1. Google Analytics 4 (GA4)**
+- Create a GA4 property at [analytics.google.com] → copy your **Measurement ID** (looks like `G-XXXXXXXXXX`).
+- Put it in `data/site.json`:
+  ```json
+  "ga4Id": "G-XXXXXXXXXX"
+  ```
+- On rebuild, the GA4 tag is injected into every page **with cross-domain tracking to sanctify.in already configured** (linker domains: sanctify.biz + sanctify.in). A `generate_lead` event also fires on form submits. If left empty, no tag is added (just an HTML comment).
+
+**2. Lead form endpoint (automatic lead capture)**
+- The form works out-of-the-box via `mailto:` (opens the visitor's email app) if you set nothing.
+- For **automatic capture**, use a no-backend form service and paste its URL:
+  - **Web3Forms** (free): sign up → get an access key. Set:
+    ```json
+    "formEndpoint": "https://api.web3forms.com/submit",
+    "formAccessKey": "your-web3forms-access-key"
+    ```
+  - **Formspree** (alternative): set `"formEndpoint": "https://formspree.io/f/yourid"` (leave `formAccessKey` empty).
+  - **Your own CRM:** set `formEndpoint` to any URL that accepts a `multipart/form-data` POST.
+- On submit, leads POST via `fetch()` with a success message; no page reload. Falls back to `mailto:` automatically if the endpoint is empty.
+
+**3. Google Search Console (GSC)** — no code needed
+- Create a **Domain property** for `sanctify.biz`, verify via DNS TXT record, then submit each wave's sitemap when you upload it (see wave steps above).
+
+After editing `data/site.json`, run:
+```bash
+npm run package   # rebuilds dist/ and repackages the 3 wave zips with your IDs baked in
+```
 
 ---
 

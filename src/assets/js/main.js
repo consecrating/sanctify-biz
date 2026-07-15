@@ -13,15 +13,49 @@
     });
   }
 
-  // Lead form: capture and route via mailto (works on static hosting with no backend).
-  // Replace with a POST to your CRM/endpoint when available.
+  // Lead form.
+  // If data-endpoint is set (e.g. Web3Forms / Formspree / your CRM URL) the form
+  // POSTs there via fetch and captures the lead automatically. If it is empty,
+  // it falls back to opening the visitor's email app (mailto) so the form always works.
   var form = document.querySelector("#lead-form");
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      var status = form.querySelector(".form-status");
+      var endpoint = (form.getAttribute("data-endpoint") || "").trim();
+      var accessKey = (form.getAttribute("data-access-key") || "").trim();
+      var page = form.getAttribute("data-page") || document.title;
+      var phone = form.getAttribute("data-phone") || "";
+
+      // GA4 lead event (safe no-op if gtag isn't present)
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "generate_lead", { source_page: page });
+      }
+
+      if (endpoint) {
+        var fd = new FormData(form);
+        fd.append("source_page", window.location.href);
+        fd.append("subject", "New enquiry from Sanctify.biz — " + page);
+        if (accessKey) { fd.append("access_key", accessKey); } // Web3Forms
+        if (status) { status.textContent = "Sending…"; }
+        var submitBtn = form.querySelector("button[type=submit]");
+        if (submitBtn) { submitBtn.disabled = true; }
+        fetch(endpoint, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+          .then(function (r) { return r.ok ? r : Promise.reject(r); })
+          .then(function () {
+            form.reset();
+            if (status) { status.textContent = "✅ Thank you! We'll get back to you within one working day."; }
+          })
+          .catch(function () {
+            if (status) { status.textContent = "Something went wrong. Please call us at " + phone + " or WhatsApp us."; }
+          })
+          .finally(function () { if (submitBtn) { submitBtn.disabled = false; } });
+        return;
+      }
+
+      // Fallback: mailto
       var data = new FormData(form);
       var to = form.getAttribute("data-email") || "help@sanctify.in";
-      var page = form.getAttribute("data-page") || document.title;
       var subject = "New enquiry from Sanctify.biz — " + page;
       var lines = [
         "Name: " + (data.get("name") || ""),
@@ -32,12 +66,8 @@
         "",
         "Source page: " + window.location.href
       ];
-      var href = "mailto:" + to +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(lines.join("\n"));
-      window.location.href = href;
-      var note = form.querySelector(".form-status");
-      if (note) { note.textContent = "Opening your email app… if nothing happens, call us at " + (form.getAttribute("data-phone") || ""); }
+      window.location.href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+      if (status) { status.textContent = "Opening your email app… if nothing happens, call us at " + phone; }
     });
   }
 

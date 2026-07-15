@@ -36,7 +36,7 @@ const locBy = Object.fromEntries(locations.map(l => [l.slug, l]));
 function img(key, w) {
   const rec = images.services[key] || images.industries[key] || images.heroes[key];
   if (!rec) return { url: "", alt: "", credit: "", creditUrl: "" };
-  return { url: `${rec.base}?auto=format&fit=crop&w=${w}&q=70`, alt: rec.alt, credit: rec.credit, creditUrl: rec.creditUrl };
+  return { url: rec.file, alt: rec.alt, credit: rec.credit, creditUrl: rec.creditUrl };
 }
 function serviceImg(s, w) { return img(s.image, w); }
 function industryImg(i, w) { return img(i.image, w); }
@@ -54,6 +54,18 @@ const U = {
 };
 
 /* ---------- shared chrome ---------- */
+function ga4Snippet() {
+  if (!site.ga4Id) return `<!-- GA4 not configured. Add your Measurement ID as "ga4Id":"G-XXXXXXXXXX" in data/site.json and rebuild to enable cross-domain analytics. -->`;
+  const domains = ["sanctify.biz", "www.sanctify.biz", "sanctify.in", "www.sanctify.in"];
+  return `<!-- Google Analytics 4 (cross-domain) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${site.ga4Id}"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','${site.ga4Id}',{linker:{domains:${JSON.stringify(domains)}}});
+</script>`;
+}
+
 function head(o) {
   const canonical = site.baseUrl + o.pathname;
   const ogImg = o.image || img("goa-hero-1", 1200).url;
@@ -63,6 +75,7 @@ function head(o) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+${ga4Snippet()}
 <title>${esc(o.title)}</title>
 <meta name="description" content="${esc(o.description)}">
 <link rel="canonical" href="${esc(canonical)}">
@@ -77,7 +90,6 @@ function head(o) {
 <meta name="geo.region" content="IN-GA">
 <meta name="geo.placename" content="Goa">
 <meta name="author" content="${esc(site.legalName)}">
-<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 <link rel="stylesheet" href="/assets/css/styles.css">
 ${schema}
 </head>`;
@@ -158,7 +170,7 @@ function leadForm(pageLabel, presetService) {
   return `<div class="leadform" id="contact">
     <h3>Get a Free Quote</h3>
     <p class="mb-0" style="color:var(--muted);font-size:.95rem">Tell us about your business — we'll respond within one working day.</p>
-    <form id="lead-form" data-email="${site.email}" data-phone="${esc(site.phone)}" data-page="${esc(pageLabel)}" style="margin-top:16px">
+    <form id="lead-form" data-email="${site.email}" data-phone="${esc(site.phone)}" data-page="${esc(pageLabel)}" data-endpoint="${esc(site.formEndpoint || "")}" data-access-key="${esc(site.formAccessKey || "")}" style="margin-top:16px">
       <div class="field"><label>Name</label><input name="name" required placeholder="Your name"></div>
       <div class="field"><label>Phone / WhatsApp</label><input name="phone" required placeholder="e.g. 98xxxxxxxx"></div>
       <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@example.com"></div>
@@ -562,7 +574,13 @@ function genRobotsAndSitemaps() {
 function copyAssets() {
   const src = path.join(ROOT, "src", "assets");
   copyDir(src, path.join(DIST, "assets"));
-  ["assets/css/styles.css", "assets/js/main.js"].forEach(f => record(1, f));
+  // record every asset file (css, js, images) into Wave 1 so they ship in wave-1.zip
+  (function walk(d) {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      const p = path.join(d, e.name);
+      if (e.isDirectory()) walk(p); else record(1, path.relative(DIST, p).replace(/\\/g, "/"));
+    }
+  })(path.join(DIST, "assets"));
 }
 function copyDir(from, to) {
   fs.mkdirSync(to, { recursive: true });
