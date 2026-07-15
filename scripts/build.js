@@ -563,8 +563,13 @@ function genCredits() {
 /* ---------- robots + sitemaps ---------- */
 function genRobotsAndSitemaps() {
   const urlset = (urls) => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${site.baseUrl}${u}</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`).join("\n")}\n</urlset>\n`;
-  const toUrls = set => [...set].map(f => "/" + f.replace(/index\.html$/, "").replace(/\\/g, "/"));
-  write("sitemap-wave1.xml", urlset(toUrls(waveFiles[1]).filter(u => !u.includes("image-credits")))); record(1, "sitemap-wave1.xml");
+  // Only real, indexable HTML pages belong in a sitemap — exclude assets (css/js/img),
+  // robots.txt, the sitemaps themselves, and the noindex image-credits page.
+  const toUrls = set => [...set]
+    .filter(f => f.endsWith(".html") && !f.startsWith("assets/") && f !== "image-credits.html")
+    .map(f => "/" + f.replace(/index\.html$/, "").replace(/\\/g, "/"))
+    .sort();
+  write("sitemap-wave1.xml", urlset(toUrls(waveFiles[1]))); record(1, "sitemap-wave1.xml");
   write("sitemap-wave2.xml", urlset(toUrls(waveFiles[2]))); record(2, "sitemap-wave2.xml");
   write("sitemap-wave3.xml", urlset(toUrls(waveFiles[3]))); record(3, "sitemap-wave3.xml");
   const robots = `User-agent: *\nAllow: /\n\nSitemap: ${site.baseUrl}/sitemap-wave1.xml\nSitemap: ${site.baseUrl}/sitemap-wave2.xml\nSitemap: ${site.baseUrl}/sitemap-wave3.xml\n`;
