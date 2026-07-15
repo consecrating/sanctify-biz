@@ -1,0 +1,10 @@
+{
+  "_comment": "Curated Tier-3 (service x industry x location) combinations only. Each entry expands to service x each industry x each location. Chosen for real search demand and commercial value; NOT an exhaustive cross-product, to avoid thin/doorway pages.",
+  "tier3": [
+    { "service": "web-design", "industries": ["hotels-resorts", "restaurants", "real-estate"], "locations": ["panjim", "calangute", "candolim", "baga"] },
+    { "service": "seo", "industries": ["hotels-resorts", "restaurants", "spa-wellness"], "locations": ["panjim", "calangute", "palolem", "morjim"] },
+    { "service": "google-ads", "industries": ["hotels-resorts", "real-estate", "travel-tour-operators"], "locations": ["panjim", "calangute", "candolim"] },
+    { "service": "social-media-marketing", "industries": ["beach-shacks-bars", "restaurants", "casinos-nightlife"], "locations": ["baga", "anjuna", "vagator"] },
+    { "service": "local-listings", "industries": ["healthcare-clinics", "professional-services"], "locations": ["panjim", "margao", "vasco-da-gama"] }
+  ]
+}

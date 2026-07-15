@@ -1,0 +1,34 @@
+{
+  "_comment": "Maps image keys to Unsplash CDN base URLs + attribution. The build script appends sizing params. Hotlinking via images.unsplash.com is permitted under the Unsplash License; attribution is rendered on /image-credits.html.",
+  "heroes": {
+    "goa-hero-1": { "base": "https://images.unsplash.com/photo-1652820330085-82a0c2b88d78", "alt": "Aerial view of a Goa beach and coastline", "credit": "Olha Kolesnyk", "creditUrl": "https://unsplash.com/@redinbook" },
+    "goa-hero-2": { "base": "https://images.unsplash.com/photo-1646748019039-e908f7e41282", "alt": "Goa beach with palm trees and a boat", "credit": "Sohan Rayguru", "creditUrl": "https://unsplash.com/@sohan_r" }
+  },
+  "services": {
+    "web-design": { "base": "https://images.unsplash.com/photo-1678690832311-bb6e361989ca", "alt": "Laptop used to build a website", "credit": "Carriza Maiquez", "creditUrl": "https://unsplash.com/@carzmaiquez" },
+    "seo": { "base": "https://images.unsplash.com/photo-1551288049-bebda4e38f71", "alt": "SEO performance analytics on a laptop screen", "credit": "Luke Chesser", "creditUrl": "https://unsplash.com/@lukechesser" },
+    "google-ads": { "base": "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74", "alt": "Data reporting dashboard on a laptop screen", "credit": "Stephen Dawson", "creditUrl": "https://unsplash.com/@dawson2406" },
+    "social-media": { "base": "https://images.unsplash.com/photo-1690883793939-f8cca2f28ee0", "alt": "Smartphone showing social media apps", "credit": "Julian", "creditUrl": "https://unsplash.com/@julianchrist" },
+    "graphic-design": { "base": "https://images.unsplash.com/photo-1759647323656-8b6de2c839fa", "alt": "Designer working on a creative colour workspace", "credit": "Jakub Zerdzicki", "creditUrl": "https://unsplash.com/@jakubzerdzicki" },
+    "content-marketing": { "base": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d", "alt": "Person writing content on a laptop", "credit": "Glenn Carstens-Peters", "creditUrl": "https://unsplash.com/@glenncarstenspeters" },
+    "email-marketing": { "base": "https://images.unsplash.com/photo-1579869847557-1f67382cc158", "alt": "Smartphone on a desk showing messages", "credit": "dole777", "creditUrl": "https://unsplash.com/@dole777" },
+    "local-listings": { "base": "https://images.unsplash.com/photo-1548345680-f5475ea5df84", "alt": "Smartphone showing a map with a location pin", "credit": "Henry Perks", "creditUrl": "https://unsplash.com/@hjkp" }
+  },
+  "industries": {
+    "restaurant": { "base": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4", "alt": "Restaurant interior with set dining tables", "credit": "Jason Leung", "creditUrl": "https://unsplash.com/@ninjason" },
+    "hotel": { "base": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4", "alt": "Tropical resort swimming pool", "credit": "Sara Dubler", "creditUrl": "https://unsplash.com/@ahungryblonde_" },
+    "beach-bar": { "base": "https://images.unsplash.com/photo-1763872625791-92de6bb7796a", "alt": "People at a beach bar by the ocean at dusk", "credit": "Daesun Kim", "creditUrl": "https://unsplash.com/@lifeandyouth" },
+    "real-estate": { "base": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914", "alt": "Modern villa exterior under a blue sky", "credit": "Yaroslav Alekseenko", "creditUrl": "https://unsplash.com/@webaliser" },
+    "travel": { "base": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2", "alt": "Scenic Goa coastline on a sunny day", "credit": "Alexey Turenkov", "creditUrl": "https://unsplash.com/@2renkov" },
+    "water-sports": { "base": "https://images.unsplash.com/photo-1554132267-d06483b00adc", "alt": "Two people riding a jet ski on the ocean", "credit": "Ludovic Gauthier", "creditUrl": "https://unsplash.com/@ludogauthier" },
+    "wedding": { "base": "https://images.unsplash.com/photo-1629744418692-345355518e78", "alt": "Wedding decorations set up on a beach", "credit": "Engin Akyurt", "creditUrl": "https://unsplash.com/@enginakyurt" },
+    "spa": { "base": "https://images.unsplash.com/photo-1576287251622-0eb2f24ae759", "alt": "Softly lit wellness candles", "credit": "Sarah Wolfe", "creditUrl": "https://unsplash.com/@sarahreneewolfe" },
+    "healthcare": { "base": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d", "alt": "Modern clinic reception lobby", "credit": "Martha Dominguez de Gouveia", "creditUrl": "https://unsplash.com/@m_dominguez_marketing" },
+    "education": { "base": "https://images.unsplash.com/photo-1509062522246-3755977927d7", "alt": "Students in a classroom with a teacher", "credit": "Quilia", "creditUrl": "https://unsplash.com/@heyquilia" },
+    "retail": { "base": "https://images.unsplash.com/photo-1596484552993-aec4311d3381", "alt": "Boutique clothing store interior", "credit": "Artem Beliaikin", "creditUrl": "https://unsplash.com/@belart84" },
+    "automobile": { "base": "https://images.unsplash.com/photo-1772110278100-d82376af5282", "alt": "Scooters parked on a street for rental", "credit": "Haberdoedas", "creditUrl": "https://unsplash.com/@haberdoedas" },
+    "nightlife": { "base": "https://images.unsplash.com/photo-1578736641330-3155e606cd40", "alt": "People dancing in a club with lights", "credit": "A J.", "creditUrl": "https://unsplash.com/@antoinejulien" },
+    "fitness": { "base": "https://images.unsplash.com/photo-1545205597-3d9d02c29597", "alt": "Group at a yoga class by the seashore", "credit": "Kaylee Garrett", "creditUrl": "https://unsplash.com/@realkayls" },
+    "professional": { "base": "https://images.unsplash.com/photo-1686771416282-3888ddaf249b", "alt": "Business professionals shaking hands in an office", "credit": "Mina Rad", "creditUrl": "https://unsplash.com/@miinrad" }
+  }
+}

@@ -1,0 +1,274 @@
+[
+  {
+    "slug": "web-design",
+    "name": "Web Design & Development",
+    "short": "Web Design",
+    "keyword": "web design",
+    "image": "web-design",
+    "tagline": "Fast, mobile-first websites that turn visitors into customers.",
+    "intro": "We design and build conversion-focused websites — clean, fast-loading and mobile-first — engineered to rank on Google and convert Goa's visitors into paying customers.",
+    "deliverables": [
+      "Custom, mobile-first responsive design",
+      "Fast-loading pages tuned for Core Web Vitals",
+      "SEO-ready structure, schema & clean URLs",
+      "Lead forms, click-to-call & WhatsApp integration",
+      "Google Maps & business-profile integration",
+      "Secure hosting setup with SSL"
+    ],
+    "valueProps": [
+      "Sites built to load in under 3 seconds on mobile data",
+      "Designed around your customer's booking or enquiry journey",
+      "Easy-to-edit content so you stay in control"
+    ],
+    "process": [
+      { "step": "Discovery", "text": "We map your services, customers and competitors." },
+      { "step": "Design", "text": "We craft a layout around your key conversion goal." },
+      { "step": "Build", "text": "We develop a fast, responsive, SEO-ready site." },
+      { "step": "Launch & Support", "text": "We go live, track performance and iterate." }
+    ],
+    "pricing": { "from": "₹14,999", "note": "one-time, packages scale with pages & features" },
+    "faqs": [
+      { "q": "How long does a website take to build?", "a": "A standard business website typically goes live in 2–4 weeks, depending on the number of pages and content readiness." },
+      { "q": "Will my website work on mobile?", "a": "Yes. Every site we build is mobile-first and tested across phones, tablets and desktops — essential when most Goa searches happen on mobile." },
+      { "q": "Do you provide hosting?", "a": "Yes, we can host your site on Sanctify Hostings with SSL, backups and support, or deploy to your preferred host." }
+    ]
+  },
+  {
+    "slug": "seo",
+    "name": "Search Engine Optimization (SEO)",
+    "short": "SEO",
+    "keyword": "SEO",
+    "image": "seo",
+    "tagline": "Rank higher on Google and win local searches.",
+    "intro": "Our SEO service gets your business found on Google when local customers search — through technical fixes, local optimisation, content and quality link-building that compound month after month.",
+    "deliverables": [
+      "Technical SEO audit & on-page fixes",
+      "Local SEO & Google Business Profile optimisation",
+      "Keyword research mapped to buyer intent",
+      "Content strategy & optimisation",
+      "Quality local citations & link-building",
+      "Monthly ranking & traffic reporting"
+    ],
+    "valueProps": [
+      "Focus on high-intent keywords that bring buyers, not just traffic",
+      "Local pack & Google Maps visibility for nearby searches",
+      "Transparent reporting so you see exactly what's working"
+    ],
+    "process": [
+      { "step": "Audit", "text": "We diagnose technical, on-page and local issues." },
+      { "step": "Strategy", "text": "We prioritise keywords by intent and opportunity." },
+      { "step": "Execute", "text": "We optimise, publish and build authority." },
+      { "step": "Report", "text": "We track rankings, traffic and leads monthly." }
+    ],
+    "pricing": { "from": "₹9,999", "note": "per month, based on competition & scope" },
+    "faqs": [
+      { "q": "How long until I see SEO results?", "a": "Local SEO improvements often show within 2–3 months, with stronger, compounding results from 6 months as authority builds." },
+      { "q": "Do you guarantee #1 rankings?", "a": "No credible agency can guarantee a specific position, since Google controls rankings. We do commit to proven, white-hat methods and measurable progress." },
+      { "q": "What is local SEO?", "a": "Local SEO optimises your presence for location-based searches so you appear in Google Maps and the local pack when nearby customers search." }
+    ]
+  },
+  {
+    "slug": "google-ads",
+    "name": "Google Ads & PPC (SEM)",
+    "short": "Google Ads",
+    "keyword": "Google Ads",
+    "image": "google-ads",
+    "tagline": "Get qualified leads fast with high-ROI paid search.",
+    "intro": "We plan, launch and optimise Google Ads campaigns that put your business at the top of search results instantly — targeting ready-to-buy customers and maximising every rupee of your budget.",
+    "deliverables": [
+      "Campaign strategy & account setup",
+      "Keyword & competitor research",
+      "High-converting ad copy & extensions",
+      "Landing page & conversion tracking setup",
+      "Bid, budget & audience optimisation",
+      "Weekly performance & spend reporting"
+    ],
+    "valueProps": [
+      "Appear at the top of Google from day one",
+      "Pay only when someone clicks your ad",
+      "Full conversion tracking so you know cost-per-lead"
+    ],
+    "process": [
+      { "step": "Plan", "text": "We define goals, audiences and budget." },
+      { "step": "Build", "text": "We structure campaigns and write ads." },
+      { "step": "Optimise", "text": "We refine bids, keywords and targeting." },
+      { "step": "Scale", "text": "We double down on what delivers leads." }
+    ],
+    "pricing": { "from": "₹7,999", "note": "per month management, plus your ad budget" },
+    "faqs": [
+      { "q": "What budget do I need for Google Ads?", "a": "It depends on your industry and competition. Many Goa businesses start with a modest daily budget and scale up as we prove cost-per-lead." },
+      { "q": "How is this different from SEO?", "a": "Google Ads delivers instant visibility through paid placements, while SEO builds long-term organic rankings. They work best together." },
+      { "q": "Do you manage the ad spend too?", "a": "Yes. We manage bids and budgets to maximise ROI, and report exactly where your spend goes." }
+    ]
+  },
+  {
+    "slug": "social-media-marketing",
+    "name": "Social Media Marketing",
+    "short": "Social Media",
+    "keyword": "social media marketing",
+    "image": "social-media",
+    "tagline": "Grow your brand and following on Instagram & Facebook.",
+    "intro": "We manage your social media end-to-end — content, creatives, posting and paid campaigns — to build a loyal following and turn engagement into enquiries for your Goa business.",
+    "deliverables": [
+      "Social media strategy & content calendar",
+      "Branded post & reel creatives",
+      "Instagram, Facebook & LinkedIn management",
+      "Paid social ad campaigns",
+      "Community engagement & response",
+      "Monthly growth & engagement reporting"
+    ],
+    "valueProps": [
+      "Consistent, on-brand content without the daily effort",
+      "Creatives designed to stop the scroll and drive action",
+      "Paid + organic working together for reach and leads"
+    ],
+    "process": [
+      { "step": "Strategy", "text": "We define voice, pillars and posting cadence." },
+      { "step": "Create", "text": "We design posts, reels and captions." },
+      { "step": "Publish", "text": "We schedule, post and engage daily." },
+      { "step": "Amplify", "text": "We boost top content with paid ads." }
+    ],
+    "pricing": { "from": "₹8,999", "note": "per month, by platforms & post volume" },
+    "faqs": [
+      { "q": "Which platforms should my business be on?", "a": "It depends on your audience. For most Goa businesses Instagram and Facebook drive the best results; we recommend platforms based on where your customers actually are." },
+      { "q": "Do you create the content too?", "a": "Yes. We handle strategy, design, captions and posting — you simply approve the calendar." },
+      { "q": "Can you run paid social ads?", "a": "Absolutely. We combine organic content with targeted Instagram and Facebook ad campaigns for maximum reach and leads." }
+    ]
+  },
+  {
+    "slug": "graphic-design",
+    "name": "Graphic Design & Branding",
+    "short": "Graphic Design",
+    "keyword": "graphic design",
+    "image": "graphic-design",
+    "tagline": "Standout logos, branding & creatives that get noticed.",
+    "intro": "From logos and brand identity to social creatives, brochures and packaging, our design team crafts visuals that make your Goa business look professional and memorable.",
+    "deliverables": [
+      "Logo design & brand identity",
+      "Brand guidelines & colour systems",
+      "Social media & ad creatives",
+      "Brochures, flyers & catalogues",
+      "Menu, packaging & signage design",
+      "Print-ready & digital file delivery"
+    ],
+    "valueProps": [
+      "A consistent, professional look across every touchpoint",
+      "Designs tailored to your industry and audience",
+      "Fast turnarounds with unlimited-round options"
+    ],
+    "process": [
+      { "step": "Brief", "text": "We understand your brand and goals." },
+      { "step": "Concepts", "text": "We present initial design directions." },
+      { "step": "Refine", "text": "We iterate to perfection with your feedback." },
+      { "step": "Deliver", "text": "We hand over all print & digital files." }
+    ],
+    "pricing": { "from": "₹4,999", "note": "per project, scales with scope" },
+    "faqs": [
+      { "q": "Do I get all the source files?", "a": "Yes. You receive editable and print-ready files, so you fully own your brand assets." },
+      { "q": "How many revisions are included?", "a": "Our packages include multiple revision rounds so we get the design exactly right for your brand." },
+      { "q": "Can you match my existing brand?", "a": "Definitely. We can work within your current guidelines or help you refresh and modernise them." }
+    ]
+  },
+  {
+    "slug": "content-marketing",
+    "name": "Content Marketing",
+    "short": "Content Marketing",
+    "keyword": "content marketing",
+    "image": "content-marketing",
+    "tagline": "Content that builds authority and drives organic traffic.",
+    "intro": "We create blogs, videos and email content that attract, educate and convert your audience — building long-term authority and a steady stream of organic traffic for your Goa business.",
+    "deliverables": [
+      "Content strategy & editorial calendar",
+      "SEO blog writing & optimisation",
+      "Video & reel scripting",
+      "Email newsletters & sequences",
+      "Landing page & website copy",
+      "Performance tracking & iteration"
+    ],
+    "valueProps": [
+      "Content mapped to what your customers are searching for",
+      "Builds trust and authority that compounds over time",
+      "Fuels your SEO, social and email channels together"
+    ],
+    "process": [
+      { "step": "Research", "text": "We find topics your audience searches for." },
+      { "step": "Create", "text": "We produce SEO-optimised, on-brand content." },
+      { "step": "Distribute", "text": "We publish across web, social and email." },
+      { "step": "Measure", "text": "We track engagement and refine topics." }
+    ],
+    "pricing": { "from": "₹6,999", "note": "per month, by content volume" },
+    "faqs": [
+      { "q": "How does content marketing help my business?", "a": "Quality content answers your customers' questions, builds trust, improves SEO rankings and gives you material to share across every channel." },
+      { "q": "Do you write the content in-house?", "a": "Yes. Our team researches, writes and optimises content tailored to your industry and audience." },
+      { "q": "How often should I publish?", "a": "Consistency matters more than volume. For most businesses a steady cadence of 4–8 quality pieces a month works well." }
+    ]
+  },
+  {
+    "slug": "email-sms-marketing",
+    "name": "Email & Bulk SMS Marketing",
+    "short": "Email & SMS",
+    "keyword": "email and SMS marketing",
+    "image": "email-marketing",
+    "tagline": "Direct campaigns that reach customers instantly.",
+    "intro": "Reach your customers directly with targeted email and bulk SMS campaigns — perfect for offers, bookings, reminders and re-engagement that drive repeat business.",
+    "deliverables": [
+      "Email & SMS campaign strategy",
+      "Contact list setup & segmentation",
+      "Branded email template design",
+      "Bulk SMS & promotional campaigns",
+      "Automated reminders & follow-ups",
+      "Open, click & conversion reporting"
+    ],
+    "valueProps": [
+      "Reach customers directly in their inbox and pocket",
+      "Ideal for offers, bookings and seasonal promotions",
+      "High ROI channel that drives repeat business"
+    ],
+    "process": [
+      { "step": "Setup", "text": "We build and segment your contact lists." },
+      { "step": "Design", "text": "We craft compelling emails and SMS copy." },
+      { "step": "Send", "text": "We schedule and deliver campaigns." },
+      { "step": "Optimise", "text": "We test and improve open & click rates." }
+    ],
+    "pricing": { "from": "₹3,999", "note": "per month, plus SMS/email credits" },
+    "faqs": [
+      { "q": "Is bulk SMS still effective?", "a": "Yes. SMS boasts very high open rates and is excellent for time-sensitive offers, booking reminders and alerts to local customers." },
+      { "q": "Do you provide the contact database?", "a": "We help you build and grow a permission-based list; we don't use purchased spam lists, which harm your brand and deliverability." },
+      { "q": "Can campaigns be automated?", "a": "Yes. We set up automated welcome, reminder and follow-up sequences that run without manual effort." }
+    ]
+  },
+  {
+    "slug": "local-listings",
+    "name": "Local Listings & Online Classifieds",
+    "short": "Local Listings",
+    "keyword": "local listings and online classifieds",
+    "image": "local-listings",
+    "tagline": "Get found across Google, Maps & every major directory.",
+    "intro": "We list and optimise your business across Google, Maps and the top classifieds and directories — building the consistent citations that boost local rankings and bring in nearby customers.",
+    "deliverables": [
+      "Google Business Profile setup & optimisation",
+      "Consistent NAP citations across directories",
+      "Listings on major classifieds portals",
+      "Review generation & management setup",
+      "Category & keyword optimisation",
+      "Local ranking & visibility reporting"
+    ],
+    "valueProps": [
+      "Consistent listings that boost local search rankings",
+      "Show up on Google Maps when customers are nearby",
+      "More calls, directions and enquiries from local searchers"
+    ],
+    "process": [
+      { "step": "Audit", "text": "We find and fix inconsistent listings." },
+      { "step": "Build", "text": "We create optimised profiles everywhere." },
+      { "step": "Optimise", "text": "We tune categories, photos and keywords." },
+      { "step": "Grow", "text": "We build reviews and monitor rankings." }
+    ],
+    "pricing": { "from": "₹4,999", "note": "per month, by number of directories" },
+    "faqs": [
+      { "q": "Why do consistent listings matter?", "a": "Search engines trust businesses with consistent name, address and phone details across the web — it directly improves local rankings and customer confidence." },
+      { "q": "Will this help me appear on Google Maps?", "a": "Yes. Optimising your Google Business Profile and citations is the core of ranking in Google Maps and the local pack." },
+      { "q": "Do you manage reviews too?", "a": "We set up systems to generate and monitor reviews, which are a major local ranking and trust factor." }
+    ]
+  }
+]

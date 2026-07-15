@@ -1,0 +1,257 @@
+[
+  {
+    "slug": "restaurants",
+    "name": "Restaurants & Cafés",
+    "singular": "restaurant",
+    "image": "restaurant",
+    "painPoints": [
+      "Empty tables on weekdays and in the off-season",
+      "Losing diners to competitors on Google & Zomato",
+      "No easy way for guests to see the menu or book a table online"
+    ],
+    "useCases": [
+      "Menu-driven website with online table reservations",
+      "Google Business Profile optimised for 'restaurants near me'",
+      "Mouth-watering food photography and reels for social"
+    ],
+    "statLine": "Restaurants we work with see more reservations from Google and Instagram, especially during tourist season."
+  },
+  {
+    "slug": "hotels-resorts",
+    "name": "Hotels & Resorts",
+    "singular": "hotel",
+    "image": "hotel",
+    "painPoints": [
+      "Over-dependence on OTAs eating into margins with commissions",
+      "Low direct bookings from your own website",
+      "Seasonal demand swings that are hard to fill"
+    ],
+    "useCases": [
+      "Direct-booking website that reduces OTA commissions",
+      "Google Ads & SEO for 'hotels in Goa' searches",
+      "Seasonal offer campaigns via email and social"
+    ],
+    "statLine": "We help hotels shift bookings from high-commission OTAs to profitable direct channels."
+  },
+  {
+    "slug": "beach-shacks-bars",
+    "name": "Beach Shacks & Bars",
+    "singular": "beach shack",
+    "image": "beach-bar",
+    "painPoints": [
+      "Footfall that swings wildly with the season and tourists",
+      "Hard to stand out among dozens of nearby shacks",
+      "No online presence for visitors searching before they arrive"
+    ],
+    "useCases": [
+      "Vibe-driven social content and event promotion",
+      "Google Maps visibility for tourists searching nearby",
+      "Event and happy-hour campaigns to fill quiet hours"
+    ],
+    "statLine": "We put beach shacks and bars on the map for tourists searching for the best spots nearby."
+  },
+  {
+    "slug": "real-estate",
+    "name": "Real Estate & Villas",
+    "singular": "real estate business",
+    "image": "real-estate",
+    "painPoints": [
+      "Expensive, low-quality leads from property portals",
+      "Long sales cycles with hard-to-track enquiries",
+      "Standing out in a crowded second-home market"
+    ],
+    "useCases": [
+      "High-converting property landing pages with lead capture",
+      "Google & Meta ads targeting out-of-state buyers",
+      "Virtual tours and premium listing showcases"
+    ],
+    "statLine": "We generate qualified property enquiries from buyers actively searching for Goa homes."
+  },
+  {
+    "slug": "travel-tour-operators",
+    "name": "Travel & Tour Operators",
+    "singular": "tour operator",
+    "image": "travel",
+    "painPoints": [
+      "Fierce competition for 'Goa tour package' searches",
+      "Seasonal booking cycles with feast-or-famine demand",
+      "Leads that don't convert into confirmed bookings"
+    ],
+    "useCases": [
+      "Package pages optimised for high-intent travel searches",
+      "Google Ads for 'Goa tour packages' and activities",
+      "Retargeting and email nurture to convert enquiries"
+    ],
+    "statLine": "We help tour operators capture travellers at the exact moment they're planning their Goa trip."
+  },
+  {
+    "slug": "water-sports-adventure",
+    "name": "Water Sports & Adventure",
+    "singular": "water sports operator",
+    "image": "water-sports",
+    "painPoints": [
+      "Highly seasonal, weather-dependent demand",
+      "Tourists booking with whoever appears first on Google",
+      "Trust and safety concerns that hurt conversions"
+    ],
+    "useCases": [
+      "Activity booking pages with trust and safety signals",
+      "Maps and 'near me' visibility for beachside searches",
+      "Action-packed video content for social channels"
+    ],
+    "statLine": "We help adventure and water-sports operators win last-minute, high-intent tourist bookings."
+  },
+  {
+    "slug": "wedding-event-planners",
+    "name": "Wedding & Event Planners",
+    "singular": "wedding planner",
+    "image": "wedding",
+    "painPoints": [
+      "High-value clients researching heavily before enquiring",
+      "Portfolio not showcased in a way that builds trust",
+      "Competing with established destination-wedding brands"
+    ],
+    "useCases": [
+      "Portfolio-rich website that showcases past events",
+      "Google & Instagram ads targeting couples planning weddings",
+      "Lead forms and enquiry funnels that qualify budgets"
+    ],
+    "statLine": "We help wedding and event planners win high-value destination clients through a standout online presence."
+  },
+  {
+    "slug": "spa-wellness",
+    "name": "Spa, Wellness & Ayurveda",
+    "singular": "spa & wellness centre",
+    "image": "spa",
+    "painPoints": [
+      "Depending on walk-ins rather than advance bookings",
+      "Hard to communicate treatments and packages online",
+      "Competing with resort in-house spas"
+    ],
+    "useCases": [
+      "Treatment menus with online booking and offers",
+      "Local SEO for 'spa near me' and 'Ayurveda in Goa'",
+      "Calming, premium visual branding and content"
+    ],
+    "statLine": "We help spa and wellness centres fill their calendars with advance bookings, not just walk-ins."
+  },
+  {
+    "slug": "healthcare-clinics",
+    "name": "Healthcare & Clinics",
+    "singular": "clinic",
+    "image": "healthcare",
+    "painPoints": [
+      "Patients choosing clinics that rank higher on Google",
+      "No easy online appointment booking",
+      "Reputation shaped by a handful of online reviews"
+    ],
+    "useCases": [
+      "Trust-building website with online appointment booking",
+      "Local SEO for 'doctor / clinic near me' searches",
+      "Reputation and review management systems"
+    ],
+    "statLine": "We help clinics attract more local patients and build a trusted online reputation."
+  },
+  {
+    "slug": "education-coaching",
+    "name": "Education & Coaching",
+    "singular": "coaching institute",
+    "image": "education",
+    "painPoints": [
+      "Admission enquiries drying up outside peak season",
+      "Parents and students comparing options online first",
+      "Low visibility against larger institutes"
+    ],
+    "useCases": [
+      "Course and admission pages built to capture enquiries",
+      "Google & Meta ads during admission season",
+      "Social proof through student results and testimonials"
+    ],
+    "statLine": "We help coaching institutes and schools fill seats with a steady flow of admission enquiries."
+  },
+  {
+    "slug": "retail-boutiques",
+    "name": "Retail & Boutiques",
+    "singular": "retail store",
+    "image": "retail",
+    "painPoints": [
+      "Foot traffic shifting to online shopping",
+      "No online store to sell beyond the physical shop",
+      "Struggling to compete with big e-commerce brands"
+    ],
+    "useCases": [
+      "E-commerce or catalogue website to sell online",
+      "Local SEO and Maps for 'shops near me' searches",
+      "Instagram shopping and product-led social content"
+    ],
+    "statLine": "We help retail stores and boutiques sell both in-store and online with a strong digital presence."
+  },
+  {
+    "slug": "automobile-dealers",
+    "name": "Automobile Dealers & Rentals",
+    "singular": "automobile business",
+    "image": "automobile",
+    "painPoints": [
+      "High-value leads lost to faster-responding competitors",
+      "Rental demand that's hard to capture from tourists online",
+      "Inventory not showcased effectively on the web"
+    ],
+    "useCases": [
+      "Inventory and rental booking pages with lead capture",
+      "Google Ads for 'car / bike rental in Goa'",
+      "Tourist-focused campaigns and instant enquiry forms"
+    ],
+    "statLine": "We help auto dealers and rental businesses capture high-intent buyers and tourists online."
+  },
+  {
+    "slug": "casinos-nightlife",
+    "name": "Casinos & Nightlife",
+    "singular": "nightlife venue",
+    "image": "nightlife",
+    "painPoints": [
+      "Tourists deciding on the night based on Google & social",
+      "Standing out among Goa's crowded nightlife scene",
+      "Promoting events and offers to the right audience"
+    ],
+    "useCases": [
+      "Event-driven website and ticket/enquiry funnels",
+      "High-energy social content and reels",
+      "Targeted ads to tourists and party-goers nearby"
+    ],
+    "statLine": "We help nightlife and entertainment venues pack the house with tourists and locals alike."
+  },
+  {
+    "slug": "fitness-yoga",
+    "name": "Fitness & Yoga Studios",
+    "singular": "fitness & yoga studio",
+    "image": "fitness",
+    "painPoints": [
+      "Membership churn and inconsistent new sign-ups",
+      "Retreat and class seats hard to fill online",
+      "Competing with the many yoga brands in Goa"
+    ],
+    "useCases": [
+      "Class and retreat booking pages with lead capture",
+      "Local SEO and ads for 'yoga / gym near me'",
+      "Inspiring social content and student testimonials"
+    ],
+    "statLine": "We help fitness and yoga studios grow memberships and fill retreats with a strong online funnel."
+  },
+  {
+    "slug": "professional-services",
+    "name": "Professional Services (CA, Legal & Consultants)",
+    "singular": "professional services firm",
+    "image": "professional",
+    "painPoints": [
+      "Relying only on referrals with no online lead flow",
+      "Low trust signals for high-consideration services",
+      "Invisible on Google for relevant local searches"
+    ],
+    "useCases": [
+      "Authority-building website with clear service pages",
+      "Local SEO for 'CA / lawyer / consultant near me'",
+      "Content marketing that demonstrates expertise"
+    ],
+    "statLine": "We help professional firms build online authority and a steady pipeline of qualified enquiries."
+  }
+]

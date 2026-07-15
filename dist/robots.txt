@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.sanctify.biz/sitemap-wave1.xml
+Sitemap: https://www.sanctify.biz/sitemap-wave2.xml
+Sitemap: https://www.sanctify.biz/sitemap-wave3.xml

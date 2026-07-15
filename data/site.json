@@ -1,0 +1,39 @@
+{
+  "brand": "Sanctify",
+  "legalName": "Sanctify Advertising & Digital Marketing Agency",
+  "domain": "sanctify.biz",
+  "baseUrl": "https://www.sanctify.biz",
+  "mainSite": "https://www.sanctify.in",
+  "hostingSite": "https://www.sanctify.co.in",
+  "tagline": "Advertising & Digital Marketing Agency in Goa",
+  "foundedYear": 2012,
+  "phone": "+91-9923352923",
+  "phoneRaw": "+919923352923",
+  "whatsapp": "919923352923",
+  "email": "help@sanctify.in",
+  "streetAddress": "Vasco-da-Gama",
+  "addressLocality": "Vasco-da-Gama",
+  "addressRegion": "Goa",
+  "addressCountry": "IN",
+  "postalCode": "403802",
+  "geo": { "lat": "15.3860", "lng": "73.8157" },
+  "rating": { "value": "4.8", "count": "128" },
+  "priceRange": "₹₹",
+  "social": {
+    "facebook": "https://www.facebook.com/sanctify.in",
+    "instagram": "https://www.instagram.com/sanctify.in",
+    "linkedin": "https://www.linkedin.com/company/sanctify"
+  },
+  "trustSignals": [
+    "Award-winning agency serving Goa since 2012",
+    "Rated 4.8/5 across 128 client reviews",
+    "100+ websites designed & optimised",
+    "1000+ keywords ranking on Google page 1"
+  ],
+  "usps": [
+    { "title": "13+ Years in Goa", "text": "Deep local-market knowledge of North & South Goa buyer behaviour." },
+    { "title": "Measurable ROI", "text": "Data-driven campaigns with transparent analytics and reporting." },
+    { "title": "One Roof, Full Stack", "text": "Web, SEO, ads, social & design — no juggling multiple vendors." },
+    { "title": "Local + Global", "text": "Global best-practice execution tuned for the Goan audience." }
+  ]
+}

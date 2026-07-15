@@ -1,0 +1,125 @@
+[
+  {
+    "slug": "panjim",
+    "name": "Panjim",
+    "aka": "Panaji",
+    "region": "North Goa",
+    "localContext": "As Goa's capital and commercial hub, Panjim is fiercely competitive online — businesses here need sharp local SEO and a polished website to stand out among established brands along 18th June Road and around the Latin Quarter of Fontainhas.",
+    "landmarks": ["Fontainhas", "18th June Road", "Miramar Beach", "Panjim Market"],
+    "audience": "a mix of locals, government and corporate professionals, and tourists exploring the capital"
+  },
+  {
+    "slug": "mapusa",
+    "name": "Mapusa",
+    "region": "North Goa",
+    "localContext": "Mapusa is North Goa's bustling market town and a gateway to the popular northern beaches. Businesses here serve a steady local population plus tourists passing through, making both local SEO and a strong mobile presence essential.",
+    "landmarks": ["Mapusa Friday Market", "Mapusa Municipal Market", "Nearby Assagao & Anjuna"],
+    "audience": "local residents, traders and tourists en route to the northern beach belt"
+  },
+  {
+    "slug": "calangute",
+    "name": "Calangute",
+    "region": "North Goa",
+    "localContext": "Known as the 'Queen of Beaches', Calangute is one of Goa's busiest tourist hubs. Competition for tourist attention is intense, so appearing on Google Maps and in 'near me' searches is decisive for winning walk-in and last-minute business.",
+    "landmarks": ["Calangute Beach", "Baga Road", "Saturday Night Market nearby"],
+    "audience": "high volumes of domestic and international tourists, especially in peak season"
+  },
+  {
+    "slug": "baga",
+    "name": "Baga",
+    "region": "North Goa",
+    "localContext": "Baga is the heartbeat of North Goa's nightlife and beach scene, packed with restaurants, clubs and water sports. Tourists here decide fast and search on mobile, so speed, reviews and Maps visibility drive the most bookings.",
+    "landmarks": ["Baga Beach", "Tito's Lane", "Saturday Night Market"],
+    "audience": "party-goers, young tourists and groups looking for food, nightlife and activities"
+  },
+  {
+    "slug": "candolim",
+    "name": "Candolim",
+    "region": "North Goa",
+    "localContext": "Candolim attracts a slightly upmarket, relaxed crowd of tourists and long-stay visitors. Businesses benefit from premium branding and a strong presence for higher-value, quality-seeking customers.",
+    "landmarks": ["Candolim Beach", "Fort Aguada nearby", "Sinquerim"],
+    "audience": "upmarket tourists, long-stay guests and couples seeking a quieter experience"
+  },
+  {
+    "slug": "anjuna",
+    "name": "Anjuna",
+    "region": "North Goa",
+    "localContext": "Anjuna is famous for its flea market, trance scene and bohemian, international crowd. A distinctive brand and social-first presence resonate strongly with the trend-conscious, well-travelled audience here.",
+    "landmarks": ["Anjuna Beach", "Anjuna Flea Market", "Curlies"],
+    "audience": "international travellers, backpackers and a trend-led, experience-seeking crowd"
+  },
+  {
+    "slug": "vagator",
+    "name": "Vagator",
+    "region": "North Goa",
+    "localContext": "Vagator's dramatic cliffs, hilltop views and music events draw a young, style-conscious crowd. Visual content and event-driven marketing perform especially well for businesses in this scenic pocket of North Goa.",
+    "landmarks": ["Vagator Beach", "Chapora Fort", "Ozran (Little Vagator)"],
+    "audience": "young travellers, music-event goers and photography-loving visitors"
+  },
+  {
+    "slug": "porvorim",
+    "name": "Porvorim",
+    "region": "North Goa",
+    "localContext": "Just across the Mandovi from Panjim, Porvorim is a fast-growing residential and commercial belt. Its resident-heavy audience makes it ideal for local service businesses that rely on nearby, repeat customers.",
+    "landmarks": ["NH-66 commercial belt", "Near Panjim & Mapusa"],
+    "audience": "residents, families and local service-seeking customers"
+  },
+  {
+    "slug": "margao",
+    "name": "Margao",
+    "aka": "Madgaon",
+    "region": "South Goa",
+    "localContext": "Margao is South Goa's commercial capital and largest town, with a dense local market and business community. Businesses here compete for a large resident base, making local SEO and reviews particularly valuable.",
+    "landmarks": ["Margao Municipal Market", "Colva & Benaulim nearby", "Margao Railway Station"],
+    "audience": "a large local population, traders and South Goa residents"
+  },
+  {
+    "slug": "vasco-da-gama",
+    "name": "Vasco da Gama",
+    "aka": "Vasco",
+    "region": "South Goa",
+    "localContext": "Home to Goa's port and airport gateway at Dabolim, Vasco is a busy commercial town — and Sanctify's own home base. Local businesses here serve residents, port and industry workers, and arriving travellers.",
+    "landmarks": ["Dabolim Airport nearby", "Baina Beach", "Mormugao Port"],
+    "audience": "residents, industry and port workers, and travellers arriving in Goa"
+  },
+  {
+    "slug": "colva",
+    "name": "Colva",
+    "region": "South Goa",
+    "localContext": "Colva is South Goa's most popular beach town, drawing families and domestic tourists. A strong Maps presence and family-friendly messaging help businesses capture the steady tourist footfall here.",
+    "landmarks": ["Colva Beach", "Colva Church", "Sernabatim"],
+    "audience": "families and domestic tourists seeking a relaxed beach holiday"
+  },
+  {
+    "slug": "benaulim",
+    "name": "Benaulim",
+    "region": "South Goa",
+    "localContext": "Quieter and more laid-back than its neighbours, Benaulim appeals to travellers seeking calm and authenticity. Businesses do well with tasteful branding aimed at a relaxed, quality-seeking visitor.",
+    "landmarks": ["Benaulim Beach", "Maria Hall", "Near Colva"],
+    "audience": "relaxed tourists, long-stay visitors and couples"
+  },
+  {
+    "slug": "ponda",
+    "name": "Ponda",
+    "region": "South Goa",
+    "localContext": "Ponda is an inland hub known for temples, spice farms and a strong local community. Its resident and domestic-tourist mix rewards businesses with solid local SEO and clear, trustworthy websites.",
+    "landmarks": ["Spice plantations", "Shri Manguesh Temple", "Ponda Market"],
+    "audience": "local residents and domestic tourists visiting temples and spice farms"
+  },
+  {
+    "slug": "palolem",
+    "name": "Palolem",
+    "region": "South Goa",
+    "localContext": "Palolem's crescent beach and eco-conscious, international crowd make it a jewel of South Goa. A scenic, social-led presence works well for businesses courting well-travelled, experience-focused visitors.",
+    "landmarks": ["Palolem Beach", "Butterfly Beach", "Silent Noise parties"],
+    "audience": "international travellers and eco-conscious, experience-seeking tourists"
+  },
+  {
+    "slug": "morjim",
+    "name": "Morjim",
+    "region": "North Goa",
+    "localContext": "Morjim, often called 'Little Russia', draws a long-stay international crowd and a growing café and wellness scene. Distinctive branding and multilingual-friendly content resonate with its cosmopolitan audience.",
+    "landmarks": ["Morjim Beach", "Turtle nesting sites", "Ashwem nearby"],
+    "audience": "long-stay international visitors, wellness travellers and café-goers"
+  }
+]
