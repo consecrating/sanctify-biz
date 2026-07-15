@@ -55,7 +55,7 @@
 
       // Fallback: mailto
       var data = new FormData(form);
-      var to = form.getAttribute("data-email") || "help@sanctify.in";
+      var to = form.getAttribute("data-email") || "business@sanctify.biz";
       var subject = "New enquiry from Sanctify.biz — " + page;
       var lines = [
         "Name: " + (data.get("name") || ""),
