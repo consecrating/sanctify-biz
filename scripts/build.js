@@ -75,6 +75,7 @@ function head(o) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+${site.gscVerification ? `<meta name="google-site-verification" content="${esc(site.gscVerification)}">` : ""}
 ${ga4Snippet()}
 <title>${esc(o.title)}</title>
 <meta name="description" content="${esc(o.description)}">
