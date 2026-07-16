@@ -101,7 +101,8 @@ p{margin-bottom:1rem}
 .marquee-track{display:flex;gap:14px;width:max-content;animation:scroll 34s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 @keyframes scroll{to{transform:translateX(-50%)}}
-.chip{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid var(--line);border-radius:999px;background:#fff;font-weight:600;color:var(--ink);white-space:nowrap;box-shadow:var(--shadow-sm)}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid var(--line);border-radius:999px;background:#fff;font-weight:600;color:var(--ink);white-space:nowrap;box-shadow:var(--shadow-sm);text-decoration:none;transition:border-color .16s,color .16s,transform .16s,box-shadow .16s}
+.chip:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-2px);box-shadow:var(--shadow)}
 .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--brand-light)}
 /* services grid + tilt */
 .tilt-wrap{perspective:1000px}
@@ -191,6 +192,30 @@ p{margin-bottom:1rem}
 .site-footer ul{list-style:none}.site-footer li{margin-bottom:10px}
 .site-footer .brand-logo{color:#fff}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:.84rem;color:#7e9a90}
+/* trusted-by wall */
+.logowall{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+.logo-item{display:flex;align-items:center;gap:11px;padding:15px 22px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow-sm);font-family:var(--font-head);font-weight:800;color:#93a29b;letter-spacing:.2px;filter:grayscale(1);opacity:.8;transition:filter .2s,opacity .2s,transform .2s,box-shadow .2s;text-decoration:none;font-size:1.02rem}
+.logo-item:hover{filter:none;opacity:1;color:var(--ink);transform:translateY(-3px);box-shadow:var(--shadow)}
+.logo-item .lb{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;color:#fff;flex-shrink:0}
+.logo-item .lb svg{width:18px;height:18px}
+/* clients grid */
+.clients{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.client{display:flex;gap:14px;align-items:flex-start;padding:20px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+.client:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.cicon{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;color:#fff;flex-shrink:0}
+.cicon svg{width:23px;height:23px}
+.client .cn{font-family:var(--font-head);font-weight:700;color:var(--ink);font-size:.98rem;line-height:1.2}
+.client .tag{display:inline-block;font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;background:var(--bg-mint);padding:2px 8px;border-radius:6px;margin-top:6px}
+.client .meta{font-size:.83rem;color:var(--muted);margin-top:8px}
+.client .svc{font-size:.82rem;color:var(--brand);margin-top:3px;font-weight:600}
+/* bento feature tiles */
+.b-feat{display:flex;flex-direction:column;justify-content:center;gap:4px}
+.b-feat .fi{width:42px;height:42px;border-radius:12px;background:var(--bg-mint);color:var(--brand);display:grid;place-items:center;margin-bottom:8px}
+.b-feat .fi svg{width:22px;height:22px}
+.b-feat b{font-family:var(--font-head);color:var(--ink);font-size:1.02rem}
+.b-feat span{color:var(--muted);font-size:.87rem}
+@media(max-width:900px){.clients{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.clients{grid-template-columns:1fr}.logo-item{padding:12px 16px;font-size:.92rem}}
 /* reveal */
 .has-js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .has-js .reveal.in{opacity:1;transform:none}
@@ -261,10 +286,10 @@ p{margin-bottom:1rem}
   </div>
 </div>
 
-<div class="marquee" style="margin-top:46px" aria-hidden="true">
+<div class="marquee" style="margin-top:46px" role="navigation" aria-label="Industries we serve">
   <div class="marquee-track">
-    <span class="chip">Restaurants</span><span class="chip">Hotels &amp; Resorts</span><span class="chip">Beach Shacks</span><span class="chip">Real Estate</span><span class="chip">Tour Operators</span><span class="chip">Spas &amp; Wellness</span><span class="chip">Clinics</span><span class="chip">Coaching</span><span class="chip">Boutiques</span><span class="chip">Rentals</span><span class="chip">Nightlife</span><span class="chip">Yoga Studios</span>
-    <span class="chip">Restaurants</span><span class="chip">Hotels &amp; Resorts</span><span class="chip">Beach Shacks</span><span class="chip">Real Estate</span><span class="chip">Tour Operators</span><span class="chip">Spas &amp; Wellness</span><span class="chip">Clinics</span><span class="chip">Coaching</span><span class="chip">Boutiques</span><span class="chip">Rentals</span><span class="chip">Nightlife</span><span class="chip">Yoga Studios</span>
+    <a class="chip" href="https://www.sanctify.biz/industries/restaurants.html">Restaurants</a><a class="chip" href="https://www.sanctify.biz/industries/hotels-resorts.html">Hotels &amp; Resorts</a><a class="chip" href="https://www.sanctify.biz/industries/beach-shacks-bars.html">Beach Shacks</a><a class="chip" href="https://www.sanctify.biz/industries/real-estate.html">Real Estate</a><a class="chip" href="https://www.sanctify.biz/industries/travel-tour-operators.html">Tour Operators</a><a class="chip" href="https://www.sanctify.biz/industries/spa-wellness.html">Spas &amp; Wellness</a><a class="chip" href="https://www.sanctify.biz/industries/healthcare-clinics.html">Clinics</a><a class="chip" href="https://www.sanctify.biz/industries/education-coaching.html">Coaching</a><a class="chip" href="https://www.sanctify.biz/industries/retail-boutiques.html">Boutiques</a><a class="chip" href="https://www.sanctify.biz/industries/automobile-dealers.html">Rentals</a><a class="chip" href="https://www.sanctify.biz/industries/casinos-nightlife.html">Nightlife</a><a class="chip" href="https://www.sanctify.biz/industries/fitness-yoga.html">Yoga Studios</a>
+    <a class="chip" href="https://www.sanctify.biz/industries/restaurants.html">Restaurants</a><a class="chip" href="https://www.sanctify.biz/industries/hotels-resorts.html">Hotels &amp; Resorts</a><a class="chip" href="https://www.sanctify.biz/industries/beach-shacks-bars.html">Beach Shacks</a><a class="chip" href="https://www.sanctify.biz/industries/real-estate.html">Real Estate</a><a class="chip" href="https://www.sanctify.biz/industries/travel-tour-operators.html">Tour Operators</a><a class="chip" href="https://www.sanctify.biz/industries/spa-wellness.html">Spas &amp; Wellness</a><a class="chip" href="https://www.sanctify.biz/industries/healthcare-clinics.html">Clinics</a><a class="chip" href="https://www.sanctify.biz/industries/education-coaching.html">Coaching</a><a class="chip" href="https://www.sanctify.biz/industries/retail-boutiques.html">Boutiques</a><a class="chip" href="https://www.sanctify.biz/industries/automobile-dealers.html">Rentals</a><a class="chip" href="https://www.sanctify.biz/industries/casinos-nightlife.html">Nightlife</a><a class="chip" href="https://www.sanctify.biz/industries/fitness-yoga.html">Yoga Studios</a>
   </div>
 </div>
 
@@ -286,16 +311,52 @@ p{margin-bottom:1rem}
 
 <section class="section section-soft" id="why">
   <div class="container">
-    <div class="section-head reveal"><span class="eyebrow">Why Sanctify</span><h2>Goa's market is our home turf</h2></div>
+    <div class="section-head reveal"><span class="eyebrow">Why Sanctify</span><h2>Goa's market is our home turf</h2><p class="lead">13+ years, 100+ businesses, one dedicated Goa team — here's what sets us apart.</p></div>
     <div class="bento">
       <div class="b b-lg reveal">
-        <div><h3>Your growth partner in Goa since 2012</h3><p>From beach shacks to hotels, clinics to real estate — we pair global best-practice with deep local insight to win you more customers.</p></div>
+        <div><h3>Your growth partner in Goa since 2012</h3><p>From beach shacks to five-star hotels, clinics to real estate — we pair global best-practice with deep local insight to win you more customers. Award-winning, results-driven, and rated 4.8/5 by 128 clients.</p></div>
         <a class="btn btn-primary" href="#contact" style="align-self:flex-start">Start your project →</a>
       </div>
       <div class="b b-stat reveal"><div class="n" data-count="4.8" data-dec="1" data-suffix="★">0</div><div class="l">128 client reviews</div></div>
       <div class="b b-stat reveal"><div class="n" data-count="100" data-suffix="+">0</div><div class="l">Websites delivered</div></div>
       <div class="b b-img reveal"><b>North &amp; South Goa — fully covered</b></div>
+      <div class="b b-feat reveal"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><b>13+ Years in Goa</b><span>Deep local-market knowledge of North &amp; South Goa buyers.</span></div>
+      <div class="b b-feat reveal"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/></svg></span><b>Measurable ROI</b><span>Transparent analytics and clear monthly reporting.</span></div>
+      <div class="b b-feat reveal"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5"/></svg></span><b>One Roof, Full Stack</b><span>Web, SEO, ads, social &amp; design in one team.</span></div>
+      <div class="b b-feat reveal"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><b>1000+ Keywords Ranked</b><span>Client pages on Google's first page.</span></div>
     </div>
+  </div>
+</section>
+
+<section class="section" id="clients">
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow">Our clients</span><h2>Trusted by 100+ brands across Goa &amp; beyond</h2><p class="lead">From national names to loved local businesses — a snapshot of who we've helped grow.</p></div>
+    <div class="logowall reveal" style="margin-bottom:46px">
+      <span class="logo-item"><span class="lb" style="background:#e11d48"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg></span>Casino Pride</span>
+      <span class="logo-item"><span class="lb" style="background:#ef6c4d"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 11l1.5-4A2 2 0 018.4 6h7.2a2 2 0 011.9 1l1.5 4h1a1 1 0 011 1v4a1 1 0 01-1 1h-1a2 2 0 11-4 0H9a2 2 0 11-4 0H4a1 1 0 01-1-1v-4a1 1 0 011-1h1z"/></svg></span>TVS</span>
+      <span class="logo-item"><span class="lb" style="background:#223a44"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 11l1.5-4A2 2 0 018.4 6h7.2a2 2 0 011.9 1l1.5 4h1a1 1 0 011 1v4a1 1 0 01-1 1h-1a2 2 0 11-4 0H9a2 2 0 11-4 0H4a1 1 0 01-1-1v-4a1 1 0 011-1h1z"/></svg></span>Mercedes-Benz</span>
+      <span class="logo-item"><span class="lb" style="background:#f59e0b"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3a1 1 0 011 1v1h10l-2 3.5L17 12H7v9H5V4a1 1 0 011-1z"/></svg></span>Bharatiya Janata Party</span>
+      <span class="logo-item"><span class="lb" style="background:#223a44"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 4h6a2 2 0 012 2v1h3a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V8a1 1 0 011-1h3V6a2 2 0 012-2zm0 3h6V6H9v1z"/></svg></span>Hindustan Petroleum</span>
+    </div>
+    <div class="clients">
+      <div class="client reveal"><div class="cicon" style="background:#ef6c4d"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 11l1.5-4A2 2 0 018.4 6h7.2a2 2 0 011.9 1l1.5 4h1a1 1 0 011 1v4a1 1 0 01-1 1h-1a2 2 0 11-4 0H9a2 2 0 11-4 0H4a1 1 0 01-1-1v-4a1 1 0 011-1h1z"/></svg></div><div><span class="cn">Mercedes-Benz</span><span class="tag">Automotive</span><div class="meta">📍 Porvorim, Goa</div><div class="svc">Digital Marketing, SEO &amp; SEM</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#e11d48"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg></div><div><span class="cn">Casino Pride</span><span class="tag">Entertainment</span><div class="meta">📍 Goa</div><div class="svc">Brand Guidelines</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#223a44"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 4h6a2 2 0 012 2v1h3a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V8a1 1 0 011-1h3V6a2 2 0 012-2zm0 3h6V6H9v1z"/></svg></div><div><span class="cn">Hindustan Petroleum</span><span class="tag">Corporate</span><div class="meta">📍 Goa</div><div class="svc">Event Management &amp; SMM</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#ef6c4d"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 11l1.5-4A2 2 0 018.4 6h7.2a2 2 0 011.9 1l1.5 4h1a1 1 0 011 1v4a1 1 0 01-1 1h-1a2 2 0 11-4 0H9a2 2 0 11-4 0H4a1 1 0 01-1-1v-4a1 1 0 011-1h1z"/></svg></div><div><span class="cn">TVS</span><span class="tag">Automotive</span><div class="meta">📍 Goa</div><div class="svc">Business Analysis &amp; Classifieds</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#f59e0b"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3a1 1 0 011 1v1h10l-2 3.5L17 12H7v9H5V4a1 1 0 011-1z"/></svg></div><div><span class="cn">Bharatiya Janata Party</span><span class="tag">Political</span><div class="meta">📍 Dabolim, Goa</div><div class="svc">Election Campaigning</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#17a37d"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 8a1 1 0 012 0v3h6V9a2 2 0 012-2h6a3 3 0 013 3v8h-2v-2H4v2H2V8zm4 3a2 2 0 110-4 2 2 0 010 4z"/></svg></div><div><span class="cn">Hotel Supreme Grande</span><span class="tag">Hospitality</span><div class="meta">📍 Calangute, Goa</div><div class="svc">Website &amp; Facebook Marketing</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#17a37d"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 8a1 1 0 012 0v3h6V9a2 2 0 012-2h6a3 3 0 013 3v8h-2v-2H4v2H2V8zm4 3a2 2 0 110-4 2 2 0 010 4z"/></svg></div><div><span class="cn">The Flora Grand</span><span class="tag">Hospitality</span><div class="meta">📍 Vasco, Goa</div><div class="svc">Hotel Website Designing</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#17a37d"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 8a1 1 0 012 0v3h6V9a2 2 0 012-2h6a3 3 0 013 3v8h-2v-2H4v2H2V8zm4 3a2 2 0 110-4 2 2 0 010 4z"/></svg></div><div><span class="cn">Hotel LaStation</span><span class="tag">Hospitality</span><div class="meta">📍 Goa</div><div class="svc">Website &amp; Facebook Marketing</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#e5233d"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 3h4v5h5v4h-5v9h-4v-9H5V8h5z"/></svg></div><div><span class="cn">Kenkre Dental Care</span><span class="tag">Healthcare</span><div class="meta">📍 Panjim, Goa</div><div class="svc">Dentist Website Designing</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#12406b"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 15.5v-2l-8-4.5V4a1.5 1.5 0 00-3 0v5L2 13.5v2l8-2.3V18l-2 1.4V21l3.5-1 3.5 1v-1.6L13 18v-2.8z"/></svg></div><div><span class="cn">Mahalasa Travels</span><span class="tag">Travel</span><div class="meta">📍 Vasco, Goa</div><div class="svc">Website Designing</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#ef6c6c"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h2l2.2 11.2A2 2 0 009.16 16H18a2 2 0 001.94-1.5L21.5 8H6.2M9 20a1 1 0 100-2 1 1 0 000 2zm9 0a1 1 0 100-2 1 1 0 000 2z"/></svg></div><div><span class="cn">Akshaya Jewellery</span><span class="tag">Retail</span><div class="meta">📍 Qatar</div><div class="svc">Jewellery Website Designing</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#6d5b8e"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 8l11 5 9-4.1V15h2V8zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.2z"/></svg></div><div><span class="cn">Kids Palace</span><span class="tag">Education</span><div class="meta">📍 Porvorim, Goa</div><div class="svc">Website Designing</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#2f6fa8"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 4h6a2 2 0 012 2v1h3a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V8a1 1 0 011-1h3V6a2 2 0 012-2zm0 3h6V6H9v1z"/></svg></div><div><span class="cn">Sun 360</span><span class="tag">Local Business</span><div class="meta">📍 Vasco, Goa</div><div class="svc">Website Re-Designing</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#2f6fa8"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 4h6a2 2 0 012 2v1h3a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V8a1 1 0 011-1h3V6a2 2 0 012-2zm0 3h6V6H9v1z"/></svg></div><div><span class="cn">Sai Dwarka</span><span class="tag">Local Business</span><div class="meta">📍 Mapusa, Goa</div><div class="svc">One-Page Website</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#223a44"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 4h6a2 2 0 012 2v1h3a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V8a1 1 0 011-1h3V6a2 2 0 012-2zm0 3h6V6H9v1z"/></svg></div><div><span class="cn">CIDIF</span><span class="tag">Corporate</span><div class="meta">📍 Goa</div><div class="svc">Website &amp; CRM Installation</div></div></div>
+      <div class="client reveal"><div class="cicon" style="background:#17a37d"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 8a1 1 0 012 0v3h6V9a2 2 0 012-2h6a3 3 0 013 3v8h-2v-2H4v2H2V8zm4 3a2 2 0 110-4 2 2 0 010 4z"/></svg></div><div><span class="cn">Hotel Grand Inn</span><span class="tag">Hospitality</span><div class="meta">📍 Calangute, Goa</div><div class="svc">Hotel Website Designing</div></div></div>
+    </div>
+    <p class="center reveal" style="margin-top:34px;color:var(--muted)">…and many more across hospitality, healthcare, education, retail &amp; automotive.</p>
   </div>
 </section>
 
