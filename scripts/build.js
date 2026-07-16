@@ -17,6 +17,7 @@ const industries = load("industries.json");
 const locations = load("locations.json");
 const images = load("images.json");
 const matrix = load("matrix.json");
+const clients = load("clients.json");
 
 function load(f) { return JSON.parse(fs.readFileSync(path.join(DATA, f), "utf8")); }
 function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
@@ -52,6 +53,36 @@ const U = {
   indHub: i => `/industries/${i.slug}.html`,
   credits: () => `/image-credits.html`,
 };
+
+/* ---------- inline SVG icons ---------- */
+function svcIcon(slug) {
+  const ic = {
+    "web-design": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M7 6.5h.01M9.5 6.5h.01"/></svg>',
+    "seo": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M8 11h6M11 8v6"/></svg>',
+    "google-ads": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3l7 17 2.5-6.5L19 11 3 3z"/></svg>',
+    "social-media-marketing": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>',
+    "graphic-design": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 19l7-7-4-4-7 7v4h4zM14 6l4 4"/></svg>',
+    "content-marketing": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v11H8l-4 4V5z"/><path d="M8 9h8M8 12h5"/></svg>',
+    "email-sms-marketing": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+    "local-listings": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>'
+  };
+  return ic[slug] || ic["web-design"];
+}
+function clientIcon(key) {
+  const ic = {
+    entertainment: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>',
+    automotive: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 11l1.5-4A2 2 0 018.4 6h7.2a2 2 0 011.9 1l1.5 4h1a1 1 0 011 1v4a1 1 0 01-1 1h-1a2 2 0 11-4 0H9a2 2 0 11-4 0H4a1 1 0 01-1-1v-4a1 1 0 011-1h1z"/></svg>',
+    corporate: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 4h6a2 2 0 012 2v1h3a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V8a1 1 0 011-1h3V6a2 2 0 012-2zm0 3h6V6H9v1z"/></svg>',
+    political: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3a1 1 0 011 1v1h10l-2 3.5L17 12H7v9H5V4a1 1 0 011-1z"/></svg>',
+    hospitality: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 8a1 1 0 012 0v3h6V9a2 2 0 012-2h6a3 3 0 013 3v8h-2v-2H4v2H2V8zm4 3a2 2 0 110-4 2 2 0 010 4z"/></svg>',
+    healthcare: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 3h4v5h5v4h-5v9h-4v-9H5V8h5z"/></svg>',
+    travel: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 15.5v-2l-8-4.5V4a1.5 1.5 0 00-3 0v5L2 13.5v2l8-2.3V18l-2 1.4V21l3.5-1 3.5 1v-1.6L13 18v-2.8z"/></svg>',
+    retail: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h2l2.2 11.2A2 2 0 009.16 16H18a2 2 0 001.94-1.5L21.5 8H6.2M9 20a1 1 0 100-2 1 1 0 000 2zm9 0a1 1 0 100-2 1 1 0 000 2z"/></svg>',
+    education: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 8l11 5 9-4.1V15h2V8zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.2z"/></svg>',
+    local: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 4h6a2 2 0 012 2v1h3a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V8a1 1 0 011-1h3V6a2 2 0 012-2zm0 3h6V6H9v1z"/></svg>'
+  };
+  return ic[key] || ic.corporate;
+}
 
 /* ---------- shared chrome ---------- */
 function ga4Snippet() {
@@ -91,6 +122,9 @@ ${ga4Snippet()}
 <meta name="geo.region" content="IN-GA">
 <meta name="geo.placename" content="Goa">
 <meta name="author" content="${esc(site.legalName)}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap">
 <link rel="stylesheet" href="/assets/css/styles.css">
 ${schema}
 </head>`;
@@ -98,6 +132,7 @@ ${schema}
 
 function header() {
   return `<body>
+<div class="progress" id="progress"></div>
 <header class="site-header">
   <div class="container">
     <nav class="nav" aria-label="Primary">
@@ -218,6 +253,7 @@ function heroBlock(o) {
   const bg = o.heroImage || o.image;
   const crumb = o.breadcrumb.map((b, i) => i < o.breadcrumb.length - 1 ? `<a href="${b.href}">${esc(b.name)}</a><span>›</span>` : `<span style="color:#fff">${esc(b.name)}</span>`).join("");
   return `<section class="hero" style="background-image:linear-gradient(rgba(8,79,62,.82),rgba(9,26,21,.9)),url('${bg}')">
+    <span class="orb o1"></span><span class="orb o2"></span>
     <div class="container">
       <div class="breadcrumb">${crumb}</div>
       <h1>${esc(o.h1)}</h1>
@@ -532,13 +568,95 @@ function genHome() {
     { q: `Which areas of Goa do you serve?`, a: `We serve businesses across North and South Goa, including ${locations.map(l => l.name).join(", ")}.` },
     { q: `How much do your services cost?`, a: `Pricing depends on your needs. Web design starts from ${svcBy["web-design"].pricing.from} and SEO from ${svcBy["seo"].pricing.from}. Get a free custom quote.` }
   ];
+  const chips = industries.map(ind => `<a class="chip" href="${U.indHub(ind)}">${esc(ind.name)}</a>`).join("");
+  const testimonials = [
+    { av: "SD", n: "Shreya Dutta", r: "Digital Marketing", q: "Highly recommend this agency to anyone looking for top-notch digital marketing in Goa. Skilled across SEO, social media and everything in between." },
+    { av: "AH", n: "Ashutosh Hazare", r: "Digital Marketing", q: "Impressed with the team's professionalism and effectiveness. I highly recommend Sanctify to any company that needs help with digital marketing." },
+    { av: "M", n: "Moin", r: "Branding", q: "Enthusiastic team, great for luxury brands. They quickly learn your business need and strategise the digital marketing accordingly." },
+    { av: "PR", n: "Pawan Raj", r: "Web & Social", q: "We got our website built by Sanctify and are ongoing with their social media services. Very happy with the results — they respond with great patience." },
+    { av: "TB", n: "TVS Bela Auto", r: "SEO client", q: "Quite happy with the Google visibility provided by Sanctify." },
+    { av: "BN", n: "Benz Nx", r: "SEO & Social", q: "Their expertise in SEO and social media helped my business rank higher and attract more customers. Highly recommended in Goa!" }
+  ];
+  const wall = clients.wall.map(c => `<span class="logo-item"><span class="lb" style="background:${c.color}">${clientIcon(c.icon)}</span>${esc(c.name)}</span>`).join("");
+  const clientGrid = clients.grid.map(c => `<div class="client"><div class="cicon" style="background:${c.color}">${clientIcon(c.icon)}</div><div><span class="cn">${esc(c.name)}</span><span class="tag">${esc(c.tag)}</span><div class="meta">📍 ${esc(c.location)}</div><div class="svc">${esc(c.service)}</div></div></div>`).join("");
+  const featClock = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+  const featChart = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/></svg>';
+  const featStack = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5"/></svg>';
+  const featSearch = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>';
+
   const html = [
     head({ pathname: "/", title: `${site.brand} — ${site.tagline} | Web Design, SEO & Ads in Goa`, description: `${site.brand} is Goa's award-winning digital marketing agency since ${site.foundedYear}. Web design, SEO, Google Ads & social media for Goa businesses. Rated ${site.rating.value}/5.`, image: img("goa-hero-1", 1200).url, schema: [localBusinessSchema(), faqSchema(faqs)] }),
     header(), ratingBar(),
-    heroBlock({ heroImage: img("goa-hero-1", 1600).url, breadcrumb: [{ name: "Home", href: "/" }], h1: `Grow Your Goa Business Online`, heroSub: `${site.brand} is Goa's award-winning digital marketing agency. From web design to SEO, ads and social media — we help local businesses win more customers.` }),
-    `<section class="section" id="services"><div class="container"><div class="section-head"><p class="eyebrow">What we do</p><h2>Full-service digital marketing for Goa</h2><p class="lead">Everything your business needs to grow online, under one roof.</p></div><div class="grid grid-4">${services.map(s => `<a class="card" href="${U.pillar(s)}" style="text-decoration:none"><div class="ico">★</div><h3>${esc(s.short)}</h3><p style="color:var(--muted);font-size:.95rem">${esc(s.tagline)}</p></a>`).join("")}</div></div></section>`,
+    // Hero (aurora + rotating word)
+    `<section class="hero hero-home">
+      <div class="hero-photo" style="background-image:url('${img("goa-hero-1", 1600).url}')"></div>
+      <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>
+      <div class="container">
+        <div class="hero-badges">
+          <span class="hero-badge"><span class="tick">★</span> ${site.rating.value}/5 · ${site.rating.count} reviews</span>
+          <span class="hero-badge"><span class="tick">✓</span> Award-winning since ${site.foundedYear}</span>
+          <span class="hero-badge"><span class="tick">✓</span> 100+ websites delivered</span>
+        </div>
+        <h1>Grow Your Goa Business<br><span class="rotator"><span class="rw" id="rw" data-words="Online|on Google|on Instagram|with Ads">Online</span></span></h1>
+        <p>${esc(site.brand)} is Goa's award-winning digital marketing agency. From web design to SEO, Google Ads and social media — we help local businesses get found and win more customers.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="#contact">Get a Free Quote →</a>
+          <a class="btn btn-outline btn-lg" href="tel:${site.phoneRaw}">📞 ${esc(site.phone)}</a>
+        </div>
+      </div>
+    </section>`,
+    // Glass stat strip (count-up)
+    `<div class="statstrip"><div class="statstrip-inner">
+      <div class="cell"><div class="n" data-count="13" data-suffix="+">0</div><div class="l">Years in Goa</div></div>
+      <div class="cell"><div class="n" data-count="100" data-suffix="+">0</div><div class="l">Websites built</div></div>
+      <div class="cell"><div class="n" data-count="1000" data-suffix="+">0</div><div class="l">Keywords on page 1</div></div>
+      <div class="cell"><div class="n" data-count="${site.rating.value}" data-dec="1" data-suffix="★">0</div><div class="l">Across ${site.rating.count} reviews</div></div>
+    </div></div>`,
+    // Marquee (clickable → industry SEO pages)
+    `<div class="marquee" style="margin-top:46px" role="navigation" aria-label="Industries we serve"><div class="marquee-track">${chips}${chips}</div></div>`,
+    // Services
+    `<section class="section" id="services"><div class="container">
+      <div class="section-head"><p class="eyebrow">What we do</p><h2>Full-service digital marketing, under one roof</h2><p class="lead">Everything your business needs to grow online — strategy, build, and measurable results.</p></div>
+      <div class="grid grid-4 tilt-wrap">${services.map(s => `<a class="card tilt" href="${U.pillar(s)}" style="text-decoration:none"><div class="ico">${svcIcon(s.slug)}</div><h3>${esc(s.short)}</h3><p style="color:var(--muted);font-size:.95rem">${esc(s.tagline)}</p><span class="more">Learn more →</span></a>`).join("")}</div>
+    </div></section>`,
+    // Why / bento
+    `<section class="section section-soft" id="why"><div class="container">
+      <div class="section-head"><p class="eyebrow">Why Sanctify</p><h2>Goa's market is our home turf</h2><p class="lead">13+ years, 100+ businesses, one dedicated Goa team — here's what sets us apart.</p></div>
+      <div class="bento">
+        <div class="b b-lg"><div><h3>Your growth partner in Goa since ${site.foundedYear}</h3><p>From beach shacks to five-star hotels, clinics to real estate — we pair global best-practice with deep local insight to win you more customers. Award-winning and rated ${site.rating.value}/5 by ${site.rating.count} clients.</p></div><a class="btn btn-primary" href="#contact" style="align-self:flex-start">Start your project →</a></div>
+        <div class="b b-stat"><div class="n" data-count="${site.rating.value}" data-dec="1" data-suffix="★">0</div><div class="l">${site.rating.count} client reviews</div></div>
+        <div class="b b-stat"><div class="n" data-count="100" data-suffix="+">0</div><div class="l">Websites delivered</div></div>
+        <div class="b b-img" style="background-image:linear-gradient(transparent,rgba(6,26,21,.8)),url('${img("goa-hero-2", 1200).url}')"><b>North &amp; South Goa — fully covered</b></div>
+        <div class="b b-feat"><span class="fi">${featClock}</span><b>13+ Years in Goa</b><span>Deep local-market knowledge of North &amp; South Goa buyers.</span></div>
+        <div class="b b-feat"><span class="fi">${featChart}</span><b>Measurable ROI</b><span>Transparent analytics and clear monthly reporting.</span></div>
+        <div class="b b-feat"><span class="fi">${featStack}</span><b>One Roof, Full Stack</b><span>Web, SEO, ads, social &amp; design in one team.</span></div>
+        <div class="b b-feat"><span class="fi">${featSearch}</span><b>1000+ Keywords Ranked</b><span>Client pages on Google's first page.</span></div>
+      </div>
+    </div></section>`,
+    // Clients
+    `<section class="section" id="clients"><div class="container">
+      <div class="section-head"><p class="eyebrow">Our clients</p><h2>Trusted by 100+ brands across Goa &amp; beyond</h2><p class="lead">From national names to loved local businesses — a snapshot of who we've helped grow.</p></div>
+      <div class="logowall" style="margin-bottom:46px">${wall}</div>
+      <div class="clients">${clientGrid}</div>
+      <p class="center" style="margin-top:34px;color:var(--muted)">…and many more across hospitality, healthcare, education, retail &amp; automotive.</p>
+    </div></section>`,
+    // Process
+    `<section class="section section-soft"><div class="container">
+      <div class="section-head"><p class="eyebrow">How we work</p><h2>A simple, proven process</h2></div>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h4>Discovery</h4><p>We map your goals, customers and competitors.</p></div>
+        <div class="step"><div class="num">2</div><h4>Strategy</h4><p>We build a plan around your key conversion goal.</p></div>
+        <div class="step"><div class="num">3</div><h4>Execute</h4><p>We design, build, launch and optimise.</p></div>
+        <div class="step"><div class="num">4</div><h4>Report</h4><p>We track rankings, traffic and leads every month.</p></div>
+      </div>
+    </div></section>`,
+    // Testimonials carousel
+    `<section class="section"><div class="container">
+      <div class="thead"><div><p class="eyebrow">Loved by local businesses</p><h2>What our clients say</h2></div><div class="tnav"><button id="tprev" aria-label="Previous testimonial">‹</button><button id="tnext" aria-label="Next testimonial">›</button></div></div>
+      <div class="tslider" id="tslider">${testimonials.map(t => `<div class="tcard"><div class="stars">★★★★★</div><p class="q">"${esc(t.q)}"</p><div class="who"><span class="av">${esc(t.av)}</span><div><b>${esc(t.n)}</b><small>${esc(t.r)}</small></div></div></div>`).join("")}</div>
+    </div></section>`,
+    // Locations
     `<section class="section section-soft"><div class="container"><div class="section-head"><p class="eyebrow">Where we work</p><h2>Serving businesses across Goa</h2></div><div class="pills" style="justify-content:center">${locations.map(l => `<a class="pill" href="${U.locHub(l)}">${esc(l.name)}</a>`).join("")}</div></div></section>`,
-    `<section class="section"><div class="container"><div class="stats">${site.trustSignals.map((t, i) => `<div class="stat"><div class="n">${["★4.8", "13+", "100+", "1000+"][i] || "★"}</div><div class="l">${esc(t)}</div></div>`).join("")}</div></div></section>`,
     faqSection(faqs),
     contactSection("Homepage", null),
     floaties(), footer()

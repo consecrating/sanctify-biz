@@ -1,0 +1,28 @@
+{
+  "_comment": "Client portfolio for the home 'Our Clients' section. 'wall' = trusted-by logo strip; 'grid' = client showcase cards. icon keys map to clientIcon() in build.js.",
+  "wall": [
+    { "name": "Casino Pride", "icon": "entertainment", "color": "#e11d48" },
+    { "name": "TVS", "icon": "automotive", "color": "#ef6c4d" },
+    { "name": "Mercedes-Benz", "icon": "automotive", "color": "#223a44" },
+    { "name": "Bharatiya Janata Party", "icon": "political", "color": "#f59e0b" },
+    { "name": "Hindustan Petroleum", "icon": "corporate", "color": "#223a44" }
+  ],
+  "grid": [
+    { "name": "Mercedes-Benz", "tag": "Automotive", "icon": "automotive", "color": "#ef6c4d", "location": "Porvorim, Goa", "service": "Digital Marketing, SEO & SEM" },
+    { "name": "Casino Pride", "tag": "Entertainment", "icon": "entertainment", "color": "#e11d48", "location": "Goa", "service": "Brand Guidelines" },
+    { "name": "Hindustan Petroleum", "tag": "Corporate", "icon": "corporate", "color": "#223a44", "location": "Goa", "service": "Event Management & SMM" },
+    { "name": "TVS", "tag": "Automotive", "icon": "automotive", "color": "#ef6c4d", "location": "Goa", "service": "Business Analysis & Classifieds" },
+    { "name": "Bharatiya Janata Party", "tag": "Political", "icon": "political", "color": "#f59e0b", "location": "Dabolim, Goa", "service": "Election Campaigning" },
+    { "name": "Hotel Supreme Grande", "tag": "Hospitality", "icon": "hospitality", "color": "#17a37d", "location": "Calangute, Goa", "service": "Website & Facebook Marketing" },
+    { "name": "The Flora Grand", "tag": "Hospitality", "icon": "hospitality", "color": "#17a37d", "location": "Vasco, Goa", "service": "Hotel Website Designing" },
+    { "name": "Hotel LaStation", "tag": "Hospitality", "icon": "hospitality", "color": "#17a37d", "location": "Goa", "service": "Website & Facebook Marketing" },
+    { "name": "Kenkre Dental Care", "tag": "Healthcare", "icon": "healthcare", "color": "#e5233d", "location": "Panjim, Goa", "service": "Dentist Website Designing" },
+    { "name": "Mahalasa Travels", "tag": "Travel", "icon": "travel", "color": "#12406b", "location": "Vasco, Goa", "service": "Website Designing" },
+    { "name": "Akshaya Jewellery", "tag": "Retail", "icon": "retail", "color": "#ef6c6c", "location": "Qatar", "service": "Jewellery Website Designing" },
+    { "name": "Kids Palace", "tag": "Education", "icon": "education", "color": "#6d5b8e", "location": "Porvorim, Goa", "service": "Website Designing" },
+    { "name": "Sun 360", "tag": "Local Business", "icon": "local", "color": "#2f6fa8", "location": "Vasco, Goa", "service": "Website Re-Designing" },
+    { "name": "Sai Dwarka", "tag": "Local Business", "icon": "local", "color": "#2f6fa8", "location": "Mapusa, Goa", "service": "One-Page Website" },
+    { "name": "CIDIF", "tag": "Corporate", "icon": "corporate", "color": "#223a44", "location": "Goa", "service": "Website & CRM Installation" },
+    { "name": "Hotel Grand Inn", "tag": "Hospitality", "icon": "hospitality", "color": "#17a37d", "location": "Calangute, Goa", "service": "Hotel Website Designing" }
+  ]
+}
