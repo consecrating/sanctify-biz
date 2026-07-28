@@ -29,6 +29,22 @@ function write(rel, html) {
 const waveFiles = { 1: new Set(), 2: new Set(), 3: new Set() };
 function record(wave, rel) { waveFiles[wave].add(rel); }
 
+/* ---------- SEO helpers ---------- */
+// Absolutise a root-relative URL for og:image / schema (must be a full URL).
+function abs(u) { if (!u) return site.baseUrl + "/assets/img/goa-hero-1.jpg"; return /^https?:\/\//.test(u) ? u : site.baseUrl + u; }
+// Keep meta descriptions within the ~158-char sweet spot, trimming on a word boundary.
+function clampDesc(s, max = 158) {
+  s = String(s).replace(/\s+/g, " ").trim();
+  if (s.length <= max) return s;
+  let cut = s.slice(0, max);
+  const sp = cut.lastIndexOf(" ");
+  if (sp > 80) cut = cut.slice(0, sp);
+  return cut.replace(/[\s,;:.\-–—]+$/, "") + "…";
+}
+// Rotate the closing call-to-action so thousands of pages don't share an identical tail.
+const CTAS = ["Get a free quote today.", "Free quote, no obligation.", "Request your free quote.", "Talk to our Goa team today.", "Start with a free consultation."];
+function cta(seed) { let h = 0; const str = String(seed); for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) >>> 0; return CTAS[h % CTAS.length]; }
+
 /* ---------- lookups & helpers ---------- */
 const svcBy = Object.fromEntries(services.map(s => [s.slug, s]));
 const indBy = Object.fromEntries(industries.map(i => [i.slug, i]));
@@ -99,7 +115,7 @@ gtag('config','${site.ga4Id}',{linker:{domains:${JSON.stringify(domains)}}});
 
 function head(o) {
   const canonical = site.baseUrl + o.pathname;
-  const ogImg = o.image || img("goa-hero-1", 1200).url;
+  const ogImg = abs(o.image || img("goa-hero-1", 1200).url);
   const schema = (o.schema || []).map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n");
   return `<!DOCTYPE html>
 <html lang="en-IN">
@@ -111,17 +127,28 @@ ${ga4Snippet()}
 <title>${esc(o.title)}</title>
 <meta name="description" content="${esc(o.description)}">
 <link rel="canonical" href="${esc(canonical)}">
-<meta name="robots" content="${o.robots || "index,follow"}">
+<meta name="robots" content="${o.robots || "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"}">
+<meta name="theme-color" content="#0b6b53">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/favicon.svg">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="en_IN">
 <meta property="og:title" content="${esc(o.title)}">
 <meta property="og:description" content="${esc(o.description)}">
 <meta property="og:url" content="${esc(canonical)}">
 <meta property="og:image" content="${esc(ogImg)}">
+<meta property="og:image:alt" content="${esc(site.brand)} — ${esc(site.tagline)}">
 <meta property="og:site_name" content="${esc(site.brand)} — ${esc(site.tagline)}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(o.title)}">
+<meta name="twitter:description" content="${esc(o.description)}">
+<meta name="twitter:image" content="${esc(ogImg)}">
 <meta name="geo.region" content="IN-GA">
 <meta name="geo.placename" content="Goa">
+<meta name="geo.position" content="${site.geo.lat};${site.geo.lng}">
+<meta name="ICBM" content="${site.geo.lat}, ${site.geo.lng}">
 <meta name="author" content="${esc(site.legalName)}">
+<meta name="publisher" content="${esc(site.legalName)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap">
@@ -222,16 +249,32 @@ function leadForm(pageLabel, presetService) {
 /* ---------- schema.org builders ---------- */
 function localBusinessSchema() {
   return {
-    "@context": "https://schema.org", "@type": "ProfessionalService",
-    name: site.legalName, image: img("goa-hero-1", 1200).url, url: site.baseUrl,
-    telephone: site.phone, email: site.email, priceRange: site.priceRange,
+    "@context": "https://schema.org", "@type": "ProfessionalService", "@id": site.baseUrl + "/#business",
+    name: site.legalName, alternateName: site.brand + ".biz",
+    description: `${site.brand} is an award-winning digital marketing and advertising agency in Goa, offering web design, SEO, Google Ads, social media, graphic design, content marketing and local listings since ${site.foundedYear}.`,
+    image: [abs(img("goa-hero-1", 1200).url), abs(img("goa-hero-2", 1200).url)],
+    logo: abs("/assets/favicon.svg"),
+    url: site.baseUrl, telephone: site.phone, email: site.email, priceRange: site.priceRange,
+    currenciesAccepted: "INR", paymentAccepted: "Cash, UPI, Bank Transfer, Card",
     address: { "@type": "PostalAddress", streetAddress: site.streetAddress, addressLocality: site.addressLocality, addressRegion: site.addressRegion, postalCode: site.postalCode, addressCountry: site.addressCountry },
     geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
-    aggregateRating: { "@type": "AggregateRating", ratingValue: site.rating.value, reviewCount: site.rating.count },
+    hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.legalName + ", " + site.addressLocality + ", Goa")}`,
+    openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:30", closes: "18:30" }],
+    aggregateRating: { "@type": "AggregateRating", ratingValue: site.rating.value, reviewCount: site.rating.count, bestRating: "5", worstRating: "1" },
+    review: [
+      { "@type": "Review", author: { "@type": "Person", name: "Shreya Dutta" }, reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" }, reviewBody: "Highly recommend this agency to anyone looking for top-notch digital marketing in Goa. Skilled across SEO, social media and everything in between." },
+      { "@type": "Review", author: { "@type": "Person", name: "Ashutosh Hazare" }, reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" }, reviewBody: "Impressed with the team's professionalism and effectiveness. I highly recommend Sanctify to any company that needs help with digital marketing." }
+    ],
     areaServed: locations.map(l => ({ "@type": "City", name: l.name })),
+    knowsAbout: services.map(s => s.name),
     foundingDate: String(site.foundedYear),
-    sameAs: Object.values(site.social)
+    makesOffer: services.map(s => ({ "@type": "Offer", priceCurrency: "INR", price: s.pricing.from.replace(/[^0-9]/g, ""), itemOffered: { "@type": "Service", name: s.name } })),
+    parentOrganization: { "@type": "Organization", name: site.legalName, url: site.mainSite },
+    sameAs: Object.values(site.social).concat([site.mainSite, site.hostingSite])
   };
+}
+function webSiteSchema() {
+  return { "@context": "https://schema.org", "@type": "WebSite", "@id": site.baseUrl + "/#website", url: site.baseUrl, name: `${site.brand} — ${site.tagline}`, publisher: { "@id": site.baseUrl + "/#business" }, inLanguage: "en-IN" };
 }
 function serviceSchema(s, areaName) {
   return {
@@ -400,7 +443,7 @@ function genPillar(s) {
   renderLanding({
     file, pathname,
     title: `${s.name} in Goa | ${site.brand}`,
-    description: `${site.brand} offers professional ${s.name.toLowerCase()} in Goa. ${s.tagline} Rated ${site.rating.value}/5. Get a free quote today.`,
+    description: clampDesc(`${s.short} in Goa by ${site.brand}. ${s.tagline} Award-winning agency since ${site.foundedYear}, rated ${site.rating.value}/5. ${cta(pathname)}`),
     image: serviceImg(s, 1200).url,
     h1: `${s.name} in Goa`,
     heroSub: s.intro,
@@ -430,7 +473,7 @@ function genServiceLocation(s, l) {
   renderLanding({
     file, pathname,
     title: `${s.name} in ${l.name}, Goa | ${site.brand}`,
-    description: `Looking for ${s.name.toLowerCase()} in ${l.name}, Goa? ${site.brand} helps ${l.name} businesses grow online. Rated ${site.rating.value}/5. Free quote.`,
+    description: clampDesc(`${s.short} in ${l.name}, Goa by ${site.brand}. ${s.tagline} Trusted ${l.region} agency rated ${site.rating.value}/5. ${cta(pathname)}`),
     image: serviceImg(s, 1200).url,
     h1: `${s.name} in ${l.name}, Goa`,
     heroSub: `Professional ${s.name.toLowerCase()} for businesses in ${l.name}. ${s.tagline}`,
@@ -457,7 +500,7 @@ function genLocationHub(l) {
     { q: `Do you understand the ${l.name} market?`, a: `${l.localContext}` }
   ];
   const html = [
-    head({ pathname, title: `Digital Marketing in ${l.name}, Goa | ${site.brand}`, description: `${site.brand} — digital marketing, web design & SEO for ${l.name} businesses. Serving ${l.region}. Rated ${site.rating.value}/5. Free quote.`, image: img("goa-hero-2", 1200).url, schema: [localBusinessSchema(), faqSchema(faqs), breadcrumbSchema([{ name: "Home", href: "/" }, { name: l.name, href: pathname }])] }),
+    head({ pathname, title: `Digital Marketing in ${l.name}, Goa | ${site.brand}`, description: clampDesc(`Digital marketing in ${l.name}, Goa by ${site.brand} — web design, SEO, Google Ads & social media for ${l.name} businesses. Serving ${l.region}, rated ${site.rating.value}/5. ${cta(pathname)}`), image: img("goa-hero-2", 1200).url, schema: [localBusinessSchema(), faqSchema(faqs), breadcrumbSchema([{ name: "Home", href: "/" }, { name: l.name, href: pathname }])] }),
     header(), ratingBar(),
     heroBlock({ heroImage: img("goa-hero-2", 1600).url, breadcrumb: [{ name: "Home", href: "/" }, { name: l.name, href: pathname }], h1: `Digital Marketing in ${l.name}, Goa`, heroSub: `Web design, SEO, ads & social media for ${l.name} businesses. ${l.localContext}` }),
     `<section class="section"><div class="container"><div class="section-head"><p class="eyebrow">Our services in ${esc(l.name)}</p><h2>How we help ${esc(l.name)} businesses grow</h2><p class="lead">${esc(l.localContext)}</p></div><div class="grid grid-4">${services.map(s => `<a class="card-link" href="${U.svcLoc(s, l)}">${esc(s.short)} <span>→</span></a>`).join("")}</div></div></section>`,
@@ -483,7 +526,7 @@ function genServiceIndustry(s, ind) {
   renderLanding({
     file, pathname,
     title: `${s.name} for ${ind.name} in Goa | ${site.brand}`,
-    description: `${s.name} built for ${ind.name.toLowerCase()} in Goa. ${ind.statLine} Rated ${site.rating.value}/5 — get a free quote from ${site.brand}.`,
+    description: clampDesc(`${s.short} for ${ind.name} in Goa by ${site.brand}. ${ind.statLine} Rated ${site.rating.value}/5. ${cta(pathname)}`),
     image: industryImg(ind, 1200).url,
     h1: `${s.name} for ${ind.name}`,
     heroSub: `Specialised ${s.name.toLowerCase()} for ${ind.name.toLowerCase()} in Goa. ${ind.statLine}`,
@@ -511,7 +554,7 @@ function genIndustryHub(ind) {
     { q: `How do you help ${ind.name.toLowerCase()} grow?`, a: `${ind.statLine} We focus on ${ind.useCases.join("; ")}.` }
   ];
   const html = [
-    head({ pathname, title: `Digital Marketing for ${ind.name} in Goa | ${site.brand}`, description: `${site.brand} helps ${ind.name.toLowerCase()} in Goa grow online with web design, SEO, ads & social media. Rated ${site.rating.value}/5. Free quote.`, image: industryImg(ind, 1200).url, schema: [localBusinessSchema(), faqSchema(faqs), breadcrumbSchema([{ name: "Home", href: "/" }, { name: ind.name, href: pathname }])] }),
+    head({ pathname, title: `Digital Marketing for ${ind.name} in Goa | ${site.brand}`, description: clampDesc(`Digital marketing for ${ind.name} in Goa by ${site.brand} — web design, SEO, ads & social media tailored to your industry. Rated ${site.rating.value}/5. ${cta(pathname)}`), image: industryImg(ind, 1200).url, schema: [localBusinessSchema(), faqSchema(faqs), breadcrumbSchema([{ name: "Home", href: "/" }, { name: ind.name, href: pathname }])] }),
     header(), ratingBar(),
     heroBlock({ heroImage: industryImg(ind, 1600).url, breadcrumb: [{ name: "Home", href: "/" }, { name: ind.name, href: pathname }], h1: `Digital Marketing for ${ind.name} in Goa`, heroSub: ind.statLine }),
     painSection(ind.painPoints.map(p => ({ h4: p, p: `A common hurdle for ${ind.name.toLowerCase()} that the right digital strategy solves.` })), ind.name.toLowerCase()),
@@ -542,7 +585,7 @@ function genTriple(s, ind, l) {
   renderLanding({
     file, pathname,
     title: `${s.name} for ${ind.name} in ${l.name}, Goa | ${site.brand}`,
-    description: `${s.name} for ${ind.name.toLowerCase()} in ${l.name}, Goa. ${ind.statLine} ${site.brand}, rated ${site.rating.value}/5. Free quote.`,
+    description: clampDesc(`${s.short} for ${ind.name} in ${l.name}, Goa. ${ind.statLine} ${site.brand}, rated ${site.rating.value}/5. ${cta(pathname)}`),
     image: industryImg(ind, 1200).url,
     h1: `${s.name} for ${ind.name} in ${l.name}`,
     heroSub: `Specialised ${s.name.toLowerCase()} for ${ind.name.toLowerCase()} in ${l.name}. ${ind.statLine}`,
@@ -585,7 +628,7 @@ function genHome() {
   const featSearch = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>';
 
   const html = [
-    head({ pathname: "/", title: `${site.brand} — ${site.tagline} | Web Design, SEO & Ads in Goa`, description: `${site.brand} is Goa's award-winning digital marketing agency since ${site.foundedYear}. Web design, SEO, Google Ads & social media for Goa businesses. Rated ${site.rating.value}/5.`, image: img("goa-hero-1", 1200).url, schema: [localBusinessSchema(), faqSchema(faqs)] }),
+    head({ pathname: "/", title: `${site.brand} — ${site.tagline} | Web Design, SEO & Ads in Goa`, description: clampDesc(`${site.brand} is Goa's award-winning digital marketing agency since ${site.foundedYear} — web design, SEO, Google Ads & social media that win local customers. Rated ${site.rating.value}/5. ${cta("/")}`), image: img("goa-hero-1", 1200).url, schema: [localBusinessSchema(), webSiteSchema(), faqSchema(faqs)] }),
     header(), ratingBar(),
     // Hero (aurora + rotating word)
     `<section class="hero hero-home">
@@ -680,7 +723,14 @@ function genCredits() {
 
 /* ---------- robots + sitemaps ---------- */
 function genRobotsAndSitemaps() {
-  const urlset = (urls) => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${site.baseUrl}${u}</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`).join("\n")}\n</urlset>\n`;
+  const today = new Date().toISOString().slice(0, 10);
+  const prio = u => {
+    if (u === "/") return "1.0";
+    if (/-in-goa\.html$/.test(u)) return "0.9";           // service pillars
+    if (/^\/(locations|industries)\//.test(u)) return "0.7"; // hubs
+    return "0.6";                                          // long-tail combos
+  };
+  const urlset = (urls) => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${site.baseUrl}${u}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>${prio(u)}</priority></url>`).join("\n")}\n</urlset>\n`;
   // Only real, indexable HTML pages belong in a sitemap — exclude assets (css/js/img),
   // robots.txt, the sitemaps themselves, and the noindex image-credits page.
   const toUrls = set => [...set]
